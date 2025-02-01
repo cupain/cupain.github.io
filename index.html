@@ -157,7 +157,7 @@
     </div>
 
     <script>
-        const montantActuel = 1000; // Modifiez cette valeur pour mettre à jour le montant actuel
+        const montantActuel = 130; // Modifiez cette valeur pour mettre à jour le montant actuel
         const objectifTotal = 2000;
 
         function calculerJoursRestants() {
@@ -171,8 +171,8 @@
         function mettreAJourProgression() {
             const pourcentage = Math.round((montantActuel / objectifTotal) * 100);
             
-            document.getElementById('montantActuel').textContent = `€ ${montantActuel}`;
-            document.getElementById('objectifTotal').textContent = `Objectif : € ${objectifTotal}`;
+            document.getElementById('montantActuel').textContent = `${montantActuel}` €;
+            document.getElementById('objectifTotal').textContent = `Objectif : ${objectifTotal}` €;
             
             const progressBar = document.getElementById('progressBar');
             progressBar.style.width = `${pourcentage}%`;
