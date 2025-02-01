@@ -133,7 +133,7 @@
             </div>
         </div>
         
-        <img src="https://www.adrisport.com/wp-content/uploads/2024/01/Vadrouille-vert.png" alt="Image de la cagnotte">
+        <img src="https://example.com/votre-image.jpg" alt="Image de la cagnotte">
     </div>
 
     <script>
@@ -141,4 +141,22 @@
             const dateFin = new Date('2025-05-09');
             const aujourdHui = new Date();
             const differenceTemps = dateFin - aujourdHui;
-            const joursRestants = M
+            const joursRestants = Math.ceil(differenceTemps / (1000 * 60 * 60 * 24));
+            document.getElementById('joursRestants').textContent = joursRestants;
+        }
+
+        function mettreAJourProgression() {
+            const montantActuel = 1000;
+            const objectifTotal = 2000;
+            const pourcentage = Math.round((montantActuel / objectifTotal) * 100);
+            
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = `${pourcentage}%`;
+            progressBar.setAttribute('data-progress', `${pourcentage}%`);
+        }
+
+        calculerJoursRestants();
+        mettreAJourProgression();
+    </script>
+</body>
+</html>
