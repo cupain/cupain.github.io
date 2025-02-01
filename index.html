@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cagnotte</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .montant {
+            font-size: 48px;
+            font-weight: bold;
+            color: #4CAF50;
+            margin: 20px 0;
+        }
+        .info {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Montant de la cagnotte</h1>
+    <div class="montant">€ 1000</div>
+    <div class="info">Nombre de participants : 50</div>
+    <div class="info">Jours restants : <span id="joursRestants"></span></div>
+    <img src="https://example.com/votre-image.jpg" alt="Image de la cagnotte">
+
+    <script>
+        function calculerJoursRestants() {
+            const dateFin = new Date('2025-05-09');
+            const aujourdHui = new Date();
+            const differenceTemps = dateFin - aujourdHui;
+            const joursRestants = Math.ceil(differenceTemps / (1000 * 60 * 60 * 24));
+            document.getElementById('joursRestants').textContent = joursRestants;
+        }
+
+        calculerJoursRestants();
+    </script>
+</body>
+</html>
