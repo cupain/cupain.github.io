@@ -154,11 +154,11 @@
         <div class="info">
             <div class="info-item">
                 <div class="info-label">Participants</div>
-                <div class="info-value">50</div>
+                 <div class="info-value" id="participants"></div>
             </div>
             <div class="info-item">
                 <div class="info-label">Jours restants</div>
-                <div class="info-value" id="joursRestants">--</div>
+                <div class="info-value" id="joursRestants"></div>
             </div>
         </div>
         
@@ -193,6 +193,7 @@
             
             document.getElementById('montantActuel').textContent = `€ ${montantActuel}`;
             document.getElementById('objectifTotal').textContent = `Objectif : € ${objectifTotal}`;
+            document.getElementById('participants').textContent = `Objectif : € ${participants}`;
             
             const progressBar = document.getElementById('progressBar');
             progressBar.style.width = `${pourcentage}%`;
