@@ -116,6 +116,22 @@
             font-size: 16px;
             color: #555;
         }
+        #ribContent {
+            display: none;
+        }
+        #showRibBtn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        #showRibBtn:hover {
+            background-color: #2980b9;
+        }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -151,8 +167,11 @@
         
         <div class="rib">
             <h3>Coordonnées bancaires</h3>
-            <p>IBAN : FR76 1234 5678 9012 3456 7890 123</p>
-            <p>BIC : ABCDEFGHIJK</p>
+            <button id="showRibBtn">Afficher le RIB</button>
+            <div id="ribContent">
+                <p>IBAN : FR76 1234 5678 9012 3456 7890 123</p>
+                <p>BIC : ABCDEFGHIJK</p>
+            </div>
         </div>
     </div>
 
@@ -171,13 +190,26 @@
         function mettreAJourProgression() {
             const pourcentage = Math.round((montantActuel / objectifTotal) * 100);
             
-            document.getElementById('montantActuel').textContent = `${montantActuel}` €;
-            document.getElementById('objectifTotal').textContent = `Objectif : ${objectifTotal}` €;
+            document.getElementById('montantActuel').textContent = `${montantActuel} €`;
+            document.getElementById('objectifTotal').textContent = `Objectif : ${objectifTotal} €`;
             
             const progressBar = document.getElementById('progressBar');
             progressBar.style.width = `${pourcentage}%`;
             progressBar.setAttribute('data-progress', `${pourcentage}%`);
         }
+
+        // Ajout du code pour afficher/masquer le RIB
+        document.getElementById('showRibBtn').addEventListener('click', function() {
+            var ribContent = document.getElementById('ribContent');
+            var showRibBtn = document.getElementById('showRibBtn');
+            if (ribContent.style.display === 'none' || ribContent.style.display === '') {
+                ribContent.style.display = 'block';
+                showRibBtn.textContent = 'Masquer le RIB';
+            } else {
+                ribContent.style.display = 'none';
+                showRibBtn.textContent = 'Pour participer, effectuez un virement au RIB en cliquant ici';
+            }
+        });
 
         calculerJoursRestants();
         mettreAJourProgression();
