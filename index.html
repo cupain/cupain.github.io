@@ -191,9 +191,9 @@
         function mettreAJourProgression() {
             const pourcentage = Math.round((montantActuel / objectifTotal) * 100);
             
-            document.getElementById('montantActuel').textContent = `€ ${montantActuel}`;
-            document.getElementById('objectifTotal').textContent = `Objectif : € ${objectifTotal}`;
-            document.getElementById('participants').textContent = `Objectif : € ${participants}`;
+            document.getElementById('montantActuel').textContent = `${montantActuel} €`;
+            document.getElementById('objectifTotal').textContent = `Objectif : ${objectifTotal} €`;
+            document.getElementById('participants').textContent = `${participants}`;
             
             const progressBar = document.getElementById('progressBar');
             progressBar.style.width = `${pourcentage}%`;
