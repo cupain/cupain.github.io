@@ -95,13 +95,26 @@
         img {
             max-width: 100%;
             height: auto;
-            margin: 40px 0;
+            margin: 40px 0 20px;
             border-radius: 20px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
         }
         img:hover {
             transform: scale(1.02);
+        }
+        .url {
+            margin-bottom: 40px;
+            font-size: 18px;
+            color: #3498db;
+        }
+        .rib {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            font-size: 16px;
+            color: #555;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -113,12 +126,12 @@
     <div class="container">
         <h1>Cagnotte | 30 ans de Léonie</h1>
         
-        <div class="montant" id="montantActuel">€ 1000</div>
-        <div class="objectif" id="objectifTotal">Objectif : € 2000</div>
+        <div class="montant" id="montantActuel"></div>
+        <div class="objectif" id="objectifTotal"></div>
         
         <div class="progress-container">
             <div class="progress-bar">
-                <div class="progress" id="progressBar" data-progress="50%"></div>
+                <div class="progress" id="progressBar"></div>
             </div>
         </div>
         
@@ -134,9 +147,19 @@
         </div>
         
         <img src="https://www.adrisport.com/wp-content/uploads/2024/01/Vadrouille-vert.png" alt="Image de la cagnotte">
+        <div class="url"><a href="https://www.adrisport.com/velo-gravel-le-vadrouille-vert-cameleon/">Voir les caractéristiques du vélo</a></div>
+        
+        <div class="rib">
+            <h3>Coordonnées bancaires</h3>
+            <p>IBAN : FR76 1234 5678 9012 3456 7890 123</p>
+            <p>BIC : ABCDEFGHIJK</p>
+        </div>
     </div>
 
     <script>
+        const montantActuel = 130; // Modifiez cette valeur pour mettre à jour le montant actuel
+        const objectifTotal = 2000;
+
         function calculerJoursRestants() {
             const dateFin = new Date('2025-05-09');
             const aujourdHui = new Date();
@@ -146,9 +169,10 @@
         }
 
         function mettreAJourProgression() {
-            const montantActuel = 1000;
-            const objectifTotal = 2000;
             const pourcentage = Math.round((montantActuel / objectifTotal) * 100);
+            
+            document.getElementById('montantActuel').textContent = `${montantActuel} `;
+            document.getElementById('objectifTotal').textContent = `Objectif : ${objectifTotal}`€;
             
             const progressBar = document.getElementById('progressBar');
             progressBar.style.width = `${pourcentage}%`;
