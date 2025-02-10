@@ -119,7 +119,7 @@
         #ribContent {
             display: none;
         }
-        #showRibBtn, #payWeroBtn {
+        #showRibBtn, #payWeroBtn, #payCBBtn {
             background-color: #3498db;
             color: white;
             border: none;
@@ -130,7 +130,7 @@
             transition: background-color 0.3s;
             margin-top: 10px;
         }
-        #showRibBtn:hover, #payWeroBtn:hover {
+        #showRibBtn:hover, #payWeroBtn:hover, #payCBBtn:hover {
             background-color: #2980b9;
         }
         #payWeroBtn {
@@ -191,6 +191,10 @@
                 <p>BIC : NTSBFRM1XXX</p>
             </div>
         </div>
+
+        <button id="payWeroBtn">Payer via Wero</button>
+        <div id="weroInfo">Mon numéro de téléphone : +33 6 12 34 56 78</div>
+        <a href="https://example.com" target="_blank" id="payCBBtn">Payer par CB</a>
     </div>
 
     <script>
@@ -218,7 +222,6 @@
             progressBar.setAttribute('data-progress', `${pourcentage}%`);
         }
 
-        // Ajout du code pour afficher/masquer le RIB
         document.getElementById('showRibBtn').addEventListener('click', function() {
             var ribContent = document.getElementById('ribContent');
             var showRibBtn = document.getElementById('showRibBtn');
@@ -228,6 +231,15 @@
             } else {
                 ribContent.style.display = 'none';
                 showRibBtn.textContent = 'Afficher le RIB';
+            }
+        });
+
+        document.getElementById('payWeroBtn').addEventListener('click', function() {
+            var weroInfo = document.getElementById('weroInfo');
+            if (weroInfo.style.display === 'none' || weroInfo.style.display === '') {
+                weroInfo.style.display = 'block';
+            } else {
+                weroInfo.style.display = 'none';
             }
         });
 
