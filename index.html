@@ -14,7 +14,7 @@
             padding: 40px 20px;
             color: #333;
         }
-        .container {
+       .container {
             max-width: 800px;
             margin: 0 auto;
             background-color: white;
@@ -27,22 +27,22 @@
             margin-bottom: 30px;
             font-weight: 700;
         }
-        .montant {
+       .montant {
             font-size: 64px;
             font-weight: 700;
             color: #27ae60;
             margin: 20px 0;
             animation: fadeIn 1s ease-out;
         }
-        .objectif {
+       .objectif {
             font-size: 24px;
             color: #7f8c8d;
             margin-bottom: 30px;
         }
-        .progress-container {
+       .progress-container {
             margin: 30px 0;
         }
-        .progress-bar {
+       .progress-bar {
             width: 100%;
             height: 20px;
             background-color: #ecf0f1;
@@ -50,14 +50,14 @@
             overflow: hidden;
             position: relative;
         }
-        .progress {
+       .progress {
             height: 100%;
             background-color: #3498db;
             width: 0;
             transition: width 1.5s ease-in-out;
             position: relative;
         }
-        .progress::after {
+       .progress::after {
             content: attr(data-progress);
             position: absolute;
             right: 10px;
@@ -66,12 +66,12 @@
             color: white;
             font-weight: bold;
         }
-        .info {
+       .info {
             display: flex;
             justify-content: space-around;
             margin-top: 40px;
         }
-        .info-item {
+       .info-item {
             flex: 1;
             padding: 20px;
             background-color: #f1f8ff;
@@ -79,15 +79,15 @@
             margin: 0 10px;
             transition: transform 0.3s ease;
         }
-        .info-item:hover {
+       .info-item:hover {
             transform: translateY(-5px);
         }
-        .info-label {
+       .info-label {
             font-size: 14px;
             color: #7f8c8d;
             margin-bottom: 5px;
         }
-        .info-value {
+       .info-value {
             font-size: 24px;
             font-weight: 700;
             color: #2c3e50;
@@ -95,7 +95,7 @@
         img {
             max-width: 100%;
             height: auto;
-            margin: 40px 0 20px;
+            margin: 20px 0;
             border-radius: 20px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
@@ -103,12 +103,12 @@
         img:hover {
             transform: scale(1.02);
         }
-        .url {
+       .url {
             margin-bottom: 40px;
             font-size: 18px;
             color: #3498db;
         }
-        .rib {
+       .rib {
             margin-top: 40px;
             padding: 20px;
             background-color: #f9f9f9;
@@ -119,6 +119,11 @@
         #ribContent {
             display: none;
         }
+       .boutons {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
         #showRibBtn, #payWeroBtn, #payCBBtn {
             background-color: #3498db;
             color: white;
@@ -128,32 +133,31 @@
             cursor: pointer;
             font-size: 16px;
             transition: background-color 0.3s;
-            margin-top: 10px;
+            margin: 10px;
         }
-        #showRibBtn:hover, #payWeroBtn:hover, #payCBBtn:hover {
+        #showRibBtn:hover, #payCBBtn:hover {
             background-color: #2980b9;
         }
         #payWeroBtn {
-            background-color: #27ae60;
-            margin-left: 10px;
-        }
-        #payWeroBtn:hover {
-            background-color: #219a52;
-        }
-        #weroInfo {
-            display: none;
-            margin-top: 10px;
-            padding: 10px;
-            background-color: #e8f6e9;
-            border-radius: 5px;
-            font-size: 14px;
-            color: #27ae60;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+    background-color: #27ae60;
+}
+#payWeroBtn:hover {
+    background-color: #219a52;
+}
+#weroInfo {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #e8f6e9;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #27ae60;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
 </head>
 <body>
     <div class="container">
@@ -179,26 +183,20 @@
             </div>
         </div>
         
+        <div class="boutons">
+            <button id="showRibBtn">Participer par virement bancaire<br />(sans commission)</button>
+            <button id="payWeroBtn">Payer via Wero<br />(sans commission)</button>
+            <a href="https://example.com" target="_blank" id="payCBBtn">Payer par CB<br />(avec commission)</a>
+        </div>
+        <div id="ribContent">
+            <p>IBAN : FR802043302626N269622304979</p>
+            <p>BIC : NTSBFRM1XXX</p>
+        </div>
+        <div id="weroInfo">Au O6 1O 27 84 15</div>
+        
         <img src="https://www.adrisport.com/wp-content/uploads/2024/01/Vadrouille-vert.png" alt="Image de la cagnotte">
         <div class="url"><a href="https://www.adrisport.com/velo-gravel-le-vadrouille-vert-cameleon/" target="_blank">Voir les caractéristiques du vélo</a></div>
         
-        <div class="rib">
-            <h3>Participez à la cagnotte</h3>
-            <button id="showRibBtn">Participer par virement bancaire<br />(sans commission)</button>
-            <div id="ribContent">
-                <p>IBAN : FR802043302626N269622304979</p>
-                <p>BIC : NTSBFRM1XXX</p>
-            </div>
-        </div>
-
-        <div class="wero">
-            <button id="payWeroBtn">Payer via Wero<br />(sans commission)</button>
-            <div id="weroInfo">Au O6 1O 27 84 15</div>
-        </div>
-
-        <div class="cb">
-            <a href="https://example.com" target="_blank" id="payCBBtn">Payer par CB<br />(avec commission)</a>
-        </div>
     </div>
 
     <script>
@@ -244,8 +242,8 @@
             }
         });
 
-        calculerJoursRestants();
-        mettreAJourProgression();
+    calculerJoursRestants();
+    mettreAJourProgression();
     </script>
 </body>
 </html>
