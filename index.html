@@ -121,9 +121,28 @@
         }
        .boutons {
             display: flex;
-            justify-content: space-around;
+            flex-wrap: wrap; /* Permet aux éléments de passer à la ligne si nécessaire */
+            justify-content: center; /* Centre les éléments */
             margin-bottom: 20px;
         }
+        
+        .boutons button,.boutons a {
+            margin: 10px; /* Ajoute une marge pour espacer les éléments */
+            background-color: #3498db; /* Couleur par défaut des boutons */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .boutons a {
+            text-decoration: none; /* Enlève le soulignement des liens */
+        }
+                }
+        
         #showRibBtn, #payWeroBtn, #payCBBtn {
             background-color: #3498db;
             color: white;
@@ -138,21 +157,32 @@
         #showRibBtn:hover, #payCBBtn:hover {
             background-color: #2980b9;
         }
-        #payWeroBtn {
-    background-color: #27ae60;
-}
-#payWeroBtn:hover {
-    background-color: #219a52;
-}
-#weroInfo {
-    display: none;
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #e8f6e9;
-    border-radius: 5px;
-    font-size: 14px;
-    color: #27ae60;
-}
+        
+       #payWeroBtn {
+            background-color: #27ae60;
+        }
+        
+        #payWeroBtn:hover {
+            background-color: #219a52;
+        }
+        
+        .btn-rouge {
+            background-color: #e74c3c; /* Définit la couleur de fond du bouton rouge */
+        }
+        
+        .btn-rouge:hover {
+            background-color: #c0392b; /* Définit la couleur de fond au survol pour le bouton rouge */
+        }
+        #weroInfo {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e8f6e9;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #27ae60;
+        }
+        
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -186,8 +216,9 @@
         <div class="boutons">
             <button id="showRibBtn">Participer par virement bancaire<br />(sans commission)</button>
             <button id="payWeroBtn">Payer via Wero<br />(sans commission)</button>
-            <a href="https://www.papayoux.com/fr/cagnotte/leonie-30-ans" target="_blank" id="payCBBtn">Payer par CB<br />(avec commission)</a>
+            <a href="https://www.papayoux.com/fr/cagnotte/leonie-30-ans" target="_blank" id="payCBBtn" class="btn-rouge">Payer par CB<br />(avec commission)</a>
         </div>
+        
         <div id="ribContent">
             <img id="ribImage" src="https://raw.githubusercontent.com/cupain/cupain.github.io/main/banque.png" alt="Image du RIB">
         </div>
