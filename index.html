@@ -223,13 +223,10 @@
 
         document.getElementById('showRibBtn').addEventListener('click', function() {
             var ribContent = document.getElementById('ribContent');
-            var showRibBtn = document.getElementById('showRibBtn');
             if (ribContent.style.display === 'none' || ribContent.style.display === '') {
                 ribContent.style.display = 'block';
-                showRibBtn.textContent = 'Masquer le RIB';
             } else {
                 ribContent.style.display = 'none';
-                showRibBtn.textContent = 'Afficher le RIB';
             }
         });
 
