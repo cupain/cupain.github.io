@@ -119,7 +119,7 @@
         #ribContent {
             display: none;
         }
-        #showRibBtn {
+        #showRibBtn, #payWeroBtn {
             background-color: #3498db;
             color: white;
             border: none;
@@ -128,9 +128,26 @@
             cursor: pointer;
             font-size: 16px;
             transition: background-color 0.3s;
+            margin-top: 10px;
         }
-        #showRibBtn:hover {
+        #showRibBtn:hover, #payWeroBtn:hover {
             background-color: #2980b9;
+        }
+        #payWeroBtn {
+            background-color: #27ae60;
+            margin-left: 10px;
+        }
+        #payWeroBtn:hover {
+            background-color: #219a52;
+        }
+        #weroInfo {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e8f6e9;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #27ae60;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -166,11 +183,12 @@
         <div class="url"><a href="https://www.adrisport.com/velo-gravel-le-vadrouille-vert-cameleon/">Voir les caractéristiques du vélo</a></div>
         
         <div class="rib">
-            <h3>Pour participer, il suffit de faire un virement à Thibault, aux coordonnées bancaires ci-dessous. C'est sans commission !</h3>
-            <button id="showRibBtn">Afficher le RIB</button>
+            <h3>Participez à la cagnotte</h3>
+            <h4>C'est sans commission !</h4>
+            <button id="showRibBtn">Participer par virement bancaire</button>
             <div id="ribContent">
-                <p>IBAN : FR76 1234 5678 9012 3456 7890 123</p>
-                <p>BIC : ABCDEFGHIJK</p>
+                <p>IBAN : FR802043302626N269622304979</p>
+                <p>BIC : NTSBFRM1XXX</p>
             </div>
         </div>
     </div>
