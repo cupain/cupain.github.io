@@ -194,10 +194,11 @@
     <div class="container">
         <h1>Cagnotte pour les 30 ans de Léonie</h1>
 
-        <div>
-            <h2>Offrons-lui un bon vélo 🚲 dont elle rêve depuis longtemps !</h2>
+         <div>
+            <p>Le 9 mai prochain, Léonie fête ses 30 ans</p>
+            <h3>Offrons-lui un bon vélo 🚲 dont elle rêve depuis longtemps !</h3>
             <p>(et de quoi l'équiper pour de beaux voyages)</p>
-            <h3>Plutôt que d'organiser une seule grande fête, on propose que Léonie rende visite en vélo à toute personne qui participe à la cagnotte !</h3>
+            <p>Plutôt que d'organiser une seule grande fête, on propose que Léonie rende visite en vélo à toute personne qui participe à la cagnotte !</p>
         </div>
 
         <a href="https://www.adrisport.com/velo-gravel-le-vadrouille-marron/" target="_blank">
@@ -218,17 +219,13 @@
         
         <div class="info">
             <div class="info-item">
-                <div class="info-label">Participants</div>
-                 <div class="info-value" id="participants"></div>
-            </div>
-            <div class="info-item">
                 <div class="info-label">Jours restants</div>
                 <div class="info-value" id="joursRestants"></div>
             </div>
         </div>
         
         <div class="boutons">
-            <button id="showRibBtn">Participer par virement bancaire<br />(sans commission)</button>
+            <button id="showRibBtn">Voir le RIB pour un virement bancaire<br />(sans commission)</button>
             <a href="https://www.papayoux.com/fr/cagnotte/leonie-30-ans" target="_blank" id="payCBBtn" class="btn-rouge">Payer par CB<br />(avec commission)</a>
         </div>
         
@@ -243,7 +240,6 @@
     <script>
         const montantActuel = 130; // Modifiez cette valeur pour mettre à jour le montant actuel
         const objectifTotal = 2000;
-        const participants = 2;
         const ribImage = document.getElementById('ribImage');
 
         function calculerJoursRestants() {
