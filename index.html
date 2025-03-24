@@ -15,19 +15,32 @@
         }
         h1 {
             color: #2c3e50;
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
         }
         .progress-container {
             display: flex;
             align-items: flex-start;
+            margin-bottom: 20px;
         }
         .progress-bar {
             width: 30px;
             background-color: #ecf0f1;
             margin-right: 20px;
+            height: 200px; /* Hauteur fixe pour la barre */
+            display: flex;
+            flex-direction: column-reverse; /* Inversion pour que la progression parte du bas */
+            overflow: hidden;
         }
         .progress {
             background-color: #3498db;
             width: 100%;
+            height: 0; /* La hauteur est gérée par JavaScript */
             transition: height 0.5s ease-in-out;
         }
         .goals {
@@ -36,28 +49,43 @@
         .goal-item {
             margin-bottom: 10px;
             padding: 5px;
-            transition: background-color 0.3s ease;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         .goal-item.active {
             background-color: #e1f0fa;
+            border-color: #3498db;
         }
         .goal-item.inactive {
-            color: #999;
+            color: #aaa;
         }
         .amount {
             font-weight: bold;
             color: #2980b9;
+        }
+        .payment-methods {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .payment-methods img {
+            max-width: 80px;
+            margin: 0 10px;
+            display: inline-block;
         }
     </style>
 </head>
 <body>
     <h1>Cagnotte pour les 30 ans de Léonie</h1>
     
-    <p>Le 9 mai prochain, Léonie fête ses 30 ans</p>
+    <p style="text-align: center;">Le 9 mai prochain, Léonie fête ses 30 ans 🎉</p>
+    
+    <img src="https://static.wikia.nocookie.net/meme/images/9/9a/I_Can_Ride_My_Bike_With_No_Handlebars.PNG/revision/latest?cb=20230117201517" alt="Vélo pour Léonie">
     
     <p>Plutôt que d'organiser une seule grande fête, on propose que Léonie rende visite en vélo à toute personne qui participe à la cagnotte !</p>
     
-    <h2>Progression de la cagnotte</h2>
+    <h2>Objectifs de la cagnotte :</h2>
+    
     <div class="progress-container">
         <div class="progress-bar">
             <div class="progress" id="progress"></div>
@@ -66,12 +94,19 @@
             <!-- Les éléments de la cagnotte seront ajoutés ici par JavaScript -->
         </div>
     </div>
-    
+
     <p>Montant actuel : <span id="current-amount">0</span> €</p>
     
-    <p>Et si on dépasse l'objectif ? Des belles sacoches de voyage !</p>
+    <p>Merci pour votre contribution !</p>
+
+    <div class="payment-methods">
+        <h3>Moyens de paiement :</h3>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Paypal_logo.svg/2560px-Paypal_logo.svg.png" alt="PayPal">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/2560px-MasterCard_Logo.svg.png" alt="MasterCard">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" alt="Visa">
+    </div>
     
-    <p>Au nom de Thibaut (sans L) Lecourt</p>
+    <p style="text-align: right;">Au nom de Thibaut (sans L) Lecourt</p>
 
     <script>
         const goals = [
@@ -86,17 +121,15 @@
             {name: "Sacoches avant Ortlieb", amount: 140}
         ];
         
-        const currentAmount = 1500; // À mettre à jour manuellement
+        let currentAmount = 1500; // À mettre à jour manuellement
+        let accumulatedAmount = 0;
         const totalAmount = goals.reduce((sum, goal) => sum + goal.amount, 0);
-        
+
         document.getElementById('current-amount').textContent = currentAmount;
         
-        const progressHeight = (currentAmount / totalAmount) * 100;
-        document.getElementById('progress').style.height = `${progressHeight}%`;
-        
+        const progressElement = document.getElementById('progress');
         const goalsContainer = document.getElementById('goals');
-        let accumulatedAmount = 0;
-        
+
         goals.forEach(goal => {
             accumulatedAmount += goal.amount;
             const goalElement = document.createElement('div');
@@ -104,6 +137,18 @@
             goalElement.innerHTML = `${goal.name}: <span class="amount">${goal.amount} €</span>`;
             goalsContainer.appendChild(goalElement);
         });
+
+        // Ajuster la hauteur de la barre de progression
+        const achievedGoals = goals.filter((goal, index) => {
+            let tempAmount = 0;
+            for (let i = 0; i <= index; i++) {
+                tempAmount += goals[i].amount;
+            }
+            return currentAmount >= tempAmount;
+        });
+
+        const achievedGoalsHeight = (achievedGoals.length / goals.length) * 100;
+        progressElement.style.height = `${achievedGoalsHeight}%`;
     </script>
 </body>
 </html>
