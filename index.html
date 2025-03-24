@@ -103,16 +103,26 @@
 
     <p>Montant actuel : <span id="current-amount">0</span> €</p>
     
-    <p>Merci pour votre contribution !</p>
-
-    <div class="payment-methods">
-        <h3>Moyens de paiement :</h3>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Paypal_logo.svg/2560px-Paypal_logo.svg.png" alt="PayPal">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/2560px-MasterCard_Logo.svg.png" alt="MasterCard">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" alt="Visa">
+     <div class="info">
+            <div class="info-item">
+                <div class="info-label">Jours restants</div>
+                <div class="info-value" id="joursRestants"></div>
+            </div>
+        </div>
+        
+        <div class="boutons">
+            <button id="showRibBtn">Voir le RIB pour un virement bancaire<br />(sans commission)</button>
+            <a href="https://www.papayoux.com/fr/cagnotte/leonie-30-ans" target="_blank" id="payCBBtn" class="btn-rouge">Payer par CB<br />(avec commission)</a>
+        </div>
+        
+        <div id="ribContent">
+            <p>Au nom de Thibaut (sans L) Lecourt </p>
+            <img id="ribImage" src="https://raw.githubusercontent.com/cupain/cupain.github.io/main/banque.png" alt="Image du RIB">
+        </div>
+        
+        <iframe src="https://framaforms.org/laissez-un-message-a-leonie-1739194232" width="100%" height="800" border="0"></iframe>
+        
     </div>
-    
-    <p style="text-align: right;">Au nom de Thibaut (sans L) Lecourt</p>
 
     <script>
         const goals = [
