@@ -4,77 +4,193 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cagnotte pour les 30 ans de Léonie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 40px 20px;
             color: #333;
+        }
+       .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            background-color: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         h1 {
             color: #2c3e50;
-            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+       .montant {
+            font-size: 64px;
+            font-weight: 700;
+            color: #27ae60;
+            margin: 20px 0;
+            animation: fadeIn 1s ease-out;
+        }
+       .objectif {
+            font-size: 24px;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+       .progress-container {
+            margin: 30px 0;
+        }
+       .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+       .progress {
+            height: 100%;
+            background-color: #3498db;
+            width: 0;
+            transition: width 1.5s ease-in-out;
+            position: relative;
+        }
+       .progress::after {
+            content: attr(data-progress);
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-weight: bold;
+        }
+       .info {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+        }
+       .info-item {
+            flex: 1;
+            padding: 20px;
+            background-color: #f1f8ff;
+            border-radius: 10px;
+            margin: 0 10px;
+            transition: transform 0.3s ease;
+        }
+       .info-item:hover {
+            transform: translateY(-5px);
+        }
+       .info-label {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+       .info-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2c3e50;
         }
         img {
             max-width: 100%;
             height: auto;
-            display: block;
-            margin: 20px auto;
+            margin: 20px 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
         }
-        .progress-container {
+        img:hover {
+            transform: scale(1.02);
+        }
+       .url {
+            margin-bottom: 40px;
+            font-size: 18px;
+            color: #3498db;
+        }
+       .rib {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+        #ribContent {
+            display: none;
+        }
+       .boutons {
             display: flex;
-            align-items: flex-start;
+            flex-wrap: wrap; /* Permet aux éléments de passer à la ligne si nécessaire */
+            justify-content: center; /* Centre les éléments */
             margin-bottom: 20px;
         }
-        .progress-bar {
-            width: 30px;
-            background-color: #ecf0f1;
-            margin-right: 20px;
-            height: 200px; /* Hauteur fixe pour la barre */
-            display: flex;
-            flex-direction: column-reverse; /* Inversion pour que la progression parte du bas */
-            overflow: hidden;
+        
+        .boutons button,.boutons a {
+            margin: 10px; /* Ajoute une marge pour espacer les éléments */
+            background-color: #3498db; /* Couleur par défaut des boutons */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
         }
-        .progress {
+        
+        .boutons a {
+            text-decoration: none; /* Enlève le soulignement des liens */
+        }
+                }
+        
+        #showRibBtn, #payWeroBtn, #payCBBtn {
             background-color: #3498db;
-            width: 100%;
-            height: 0; /* La hauteur est gérée par JavaScript */
-            transition: height 0.5s ease-in-out;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin: 10px;
         }
-        .goals {
-            flex-grow: 1;
+        #showRibBtn:hover {
+            background-color: #2980b9;
         }
-        .goal-item {
-            margin-bottom: 10px;
-            padding: 5px;
-            border: 1px solid #ddd;
-            background-color: #f9f9f9;
-            transition: background-color 0.3s ease, color 0.3s ease;
+
+        #payCBBtn {
+            background-color: #e74c3c;
         }
-        .goal-item.active {
-            background-color: #e1f0fa;
-            border-color: #3498db;
+
+        
+         #payCBBtn:hover {
+            background-color: #e74c3c;
         }
-        .goal-item.inactive {
-            color: #aaa;
+        
+        .btn-rouge {
+            background-color: #e74c3c; /* Définit la couleur de fond du bouton rouge */
         }
-        .amount {
-            font-weight: bold;
-            color: #2980b9;
+        
+        .btn-rouge:hover {
+            background-color: #c0392b; /* Définit la couleur de fond au survol pour le bouton rouge */
         }
-        .payment-methods {
-            text-align: center;
-            margin-top: 20px;
+        #weroInfo {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e8f6e9;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #27ae60;
         }
-        .payment-methods img {
-            max-width: 80px;
-            margin: 0 10px;
-            display: inline-block;
-        }
-    </style>
+        
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
 </head>
+    
 <body>
     <div class="container">
         <h1>Cagnotte pour les 30 ans de Léonie</h1>
