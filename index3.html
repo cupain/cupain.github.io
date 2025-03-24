@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cagnotte pour les 30 ans de Léonie</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .progress-container {
+            display: flex;
+            align-items: flex-start;
+        }
+        .progress-bar {
+            width: 30px;
+            background-color: #ecf0f1;
+            margin-right: 20px;
+        }
+        .progress {
+            background-color: #3498db;
+            width: 100%;
+            transition: height 0.5s ease-in-out;
+        }
+        .goals {
+            flex-grow: 1;
+        }
+        .goal-item {
+            margin-bottom: 10px;
+            padding: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .goal-item.active {
+            background-color: #e1f0fa;
+        }
+        .goal-item.inactive {
+            color: #999;
+        }
+        .amount {
+            font-weight: bold;
+            color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cagnotte pour les 30 ans de Léonie</h1>
+    
+    <p>Le 9 mai prochain, Léonie fête ses 30 ans</p>
+    
+    <p>Plutôt que d'organiser une seule grande fête, on propose que Léonie rende visite en vélo à toute personne qui participe à la cagnotte !</p>
+    
+    <h2>Progression de la cagnotte</h2>
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+        <div class="goals" id="goals">
+            <!-- Les éléments de la cagnotte seront ajoutés ici par JavaScript -->
+        </div>
+    </div>
+    
+    <p>Montant actuel : <span id="current-amount">0</span> €</p>
+    
+    <p>Et si on dépasse l'objectif ? Des belles sacoches de voyage !</p>
+    
+    <p>Au nom de Thibaut (sans L) Lecourt</p>
+
+    <script>
+        const goals = [
+            {name: "Le vélo", amount: 1800},
+            {name: "Montage + réglage + marquage", amount: 90},
+            {name: "Pédales", amount: 50},
+            {name: "Antivol", amount: 80},
+            {name: "Porte-bagages", amount: 40},
+            {name: "Changement de la selle", amount: 100},
+            {name: "Kit éclairage", amount: 70},
+            {name: "Sacoches arrière Ortlieb", amount: 180},
+            {name: "Sacoches avant Ortlieb", amount: 140}
+        ];
+        
+        const currentAmount = 1500; // À mettre à jour manuellement
+        const totalAmount = goals.reduce((sum, goal) => sum + goal.amount, 0);
+        
+        document.getElementById('current-amount').textContent = currentAmount;
+        
+        const progressHeight = (currentAmount / totalAmount) * 100;
+        document.getElementById('progress').style.height = `${progressHeight}%`;
+        
+        const goalsContainer = document.getElementById('goals');
+        let accumulatedAmount = 0;
+        
+        goals.forEach(goal => {
+            accumulatedAmount += goal.amount;
+            const goalElement = document.createElement('div');
+            goalElement.className = `goal-item ${currentAmount >= accumulatedAmount ? 'active' : 'inactive'}`;
+            goalElement.innerHTML = `${goal.name}: <span class="amount">${goal.amount} €</span>`;
+            goalsContainer.appendChild(goalElement);
+        });
+    </script>
+</body>
+</html>
