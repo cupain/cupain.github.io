@@ -14,7 +14,7 @@
             padding: 40px 20px;
             color: #333;
         }
-       .container {
+        .container {
             max-width: 800px;
             margin: 0 auto;
             background-color: white;
@@ -27,14 +27,14 @@
             margin-bottom: 30px;
             font-weight: 700;
         }
-       .montant {
+        .montant {
             font-size: 64px;
             font-weight: 700;
             color: #27ae60;
             margin: 20px 0;
             animation: fadeIn 1s ease-out;
         }
-       .progress-container {
+        .progress-container {
             display: flex;
             justify-content: center;
             align-items: flex-end;
@@ -63,7 +63,7 @@
             width: 100%;
             height: 100%;
             background-color: #3498db;
-            transition: width 1s ease-in-out;
+            transition: width 1.5s ease-in-out;
             position: relative;
         }
 
@@ -78,8 +78,84 @@
             text-align: left;
         }
 
-        .progress-box.completed {
-            background-color: #27ae60;
+        .completed {
+            background-color: #27ae60 !important;
+        }
+        .info {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+        }
+        .info-item {
+            flex: 1;
+            padding: 20px;
+            background-color: #f1f8ff;
+            border-radius: 10px;
+            margin: 0 10px;
+            transition: transform 0.3s ease;
+        }
+        .info-item:hover {
+            transform: translateY(-5px);
+        }
+        .info-label {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+        .info-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        img:hover {
+            transform: scale(1.02);
+        }
+        .boutons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .boutons button, .boutons a {
+            margin: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .boutons a {
+            text-decoration: none;
+        }
+        #showRibBtn, #payCBBtn {
+            background-color: #3498db;
+        }
+        #showRibBtn:hover {
+            background-color: #2980b9;
+        }
+        #payCBBtn {
+            background-color: #e74c3c;
+        }
+        #payCBBtn:hover {
+            background-color: #c0392b;
+        }
+        #ribContent {
+            display: none;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -89,121 +165,76 @@
 
         <div>
             <p>Le 9 mai prochain, Léonie fête ses 30 ans</p>
-            <h3>Offrons-lui un bon vélo dont elle rêve depuis longtemps!</h3>
-            <h4>et made in Bretagne!</h4>
-            <p>Plutôt que d'organiser une seule grande fête, on propose que Léonie rende visite en vélo à toute personne qui participe à la cagnotte!</p>
-        </div>
+<h3>Offrons-lui un bon vélo 🚲 dont elle rêve depuis longtemps !</h3>
+<h4>et made in Bretagne !</h4>
+<p>Plutôt que d'organiser une seule grande fête, on propose que Léonie rende visite en vélo à toute personne qui participe à la cagnotte !</p>
 
-        <a href="https://www.adrisport.com/velo-gravel-le-vadrouille-marron/" target="_blank">
-            <img src="https://www.adrisport.com/wp-content/uploads/2023/06/72DPI_VADROUILLE_MARRON.webp" alt="Image du vélo" />
-        </a>
+<a href="https://www.adrisport.com/velo-gravel-le-vadrouille-marron/" target="_blank">
+    <img src="https://www.adrisport.com/wp-content/uploads/2023/06/72DPI_VADROUILLE_MARRON.webp" alt="Image du vélo" />
+</a>
 
-        <div>
-            <h1>Montant actuel de la cagnotte</h1>
-        </div>
-        <div class="montant" id="montantActuel"></div>
-        
-        <div class="progress-container">
-            <div class="progress-bars">
-                <div class="progress-box">
-                    <div class="progress-fill" style="width: 100%;"></div>
-                    <div class="progress-label">Sacoches avant (250€)</div>
-                </div>
-                <div class="progress-box">
-                    <div class="progress-fill" style="width: 100%;"></div>
-                    <div class="progress-label">Sacoches arrière (250€)</div>
-                </div>
-                <div class="progress-box">
-                    <div class="progress-fill" style="width: 100%;"></div>
-                    <div class="progress-label">Pack éclairage (70€)</div>
-                </div>
-                <div class="progress-box">
-                    <div class="progress-fill" style="width: 100%;"></div>
-                    <div class="progress-label">Changement de la selle (100€)</div>
-                </div>
-                <div class="progress-box">
-                    <div class="progress-fill" style="width: 100%;"></div>
-                    <div class="progress-label">Porte-bagages (40€)</div>
-                </div>
-                <div class="progress-box">
-                    <div class="progress-fill" style="width: 100%;"></div>
-                    <div class="progress-label">Antivol (80€)</div>
-                </div>
-                <div class="progress-box">
-                    <div class="progress-fill" style="width: 100%;"></div>
-                    <div class="progress-label">Pack réglage (90€)</div>
-                </div>
-                <div class="progress-box">
-                    <div class="progress-fill" style="width: 100%;"></div>
-                    <div class="progress-label">Pédales (50€)</div>
-                </div>
-                <div class="progress-box">
-                    <div class="progress-fill" style="width: 100%;"></div>
-                    <div class="progress-label">Le vélo (1800€)</div>
-                </div>
-            </div>
-        </div>
+<div>
+    <h1>Montant actuel de la cagnotte</h1>
+</div>
+<div class="montant" id="montantActuel">1850 €</div>
 
-        <div class="info">
-            <div class="info-item">
-                <div class="info-label">Jours restants</div>
-                <div class="info-value" id="joursRestants"></div>
-            </div>
+<div class="progress-container">
+    <div class="progress-bars">
+        <!-- Steps for the progress bar -->
+        <div class="progress-box">
+            <div class="progress-fill" style="width: 100%"></div>
+            <div class="progress-label">Le vélo (1800 €)</div>
         </div>
-        
-        <div class="boutons">
-            <button id="showRibBtn">Voir le RIB pour un virement bancaire<br />(sans commission)</button>
-            <a href="https://www.papayoux.com/fr/cagnotte/leonie-30-ans" target="_blank" id="payCBBtn">Payer par CB<br />(avec commission)</a>
+        <div class="progress-box">
+            <div class="progress-fill" style="width: 100%"></div>
+            <div class="progress-label">Pédales (50 €)</div>
         </div>
-        
-        <div id="ribContent">
-            <p>Au nom de Thibaut (sans L) Lecourt </p>
-            <img id="ribImage" src="https://raw.githubusercontent.com/cupain/cupain.github.io/main/banque.png" alt="Image du RIB">
+        <div class="progress-box">
+            <div class="progress-fill" style="width: 100%"></div>
+            <div class="progress-label">Pack réglage (90 €)</div>
         </div>
-        
-        <iframe src="https://framaforms.org/laissez-un-message-a-leonie-1739194232" width="100%" height="800" border="0"></iframe>
-        
+        <div class="progress-box">
+            <div class="progress-fill" style="width: 100%"></div>
+            <div class="progress-label">Antivol (80 €)</div>
+        </div>
+        <div class="progress-box">
+            <div class="progress-fill" style="width: 100%"></div>
+            <div class="progress-label">Porte-bagages (40 €)</div>
+        </div>
+        <div class="progress-box">
+            <div class="progress-fill" style="width: 100%"></div>
+            <div class="progress-label">Changement de la selle (100 €)</div>
+        </div>
+        <div class="progress-box">
+            <div class="progress-fill" style="width: 100%"></div>
+            <div class="progress-label">Pack éclairage (70 €)</div>
+        </div>
+        <div class="progress-box">
+            <div class="progress-fill" style="width: 100%"></div>
+            <div class="progress-label">Sacoches arrière (250 €)</div>
+        </div>
+        <div class="progress-box">
+            <div class="progress-fill" style="width: 100%"></div>
+            <div class="progress-label">Sacoches avant (250 €)</div>
+        </div>
     </div>
-    <script>
-        const montantActuel = 1850;
-        const objectifs = [
-            { nom: "Sacoches avant", montant: 250 },
-            { nom: "Sacoches arrière", montant: 250 },
-            { nom: "Pack éclairage", montant: 70 },
-            { nom: "Changement de la selle", montant: 100 },
-            { nom: "Porte-bagages", montant: 40 },
-            { nom: "Antivol", montant: 80 },
-            { nom: "Pack réglage", montant: 90 },
-            { nom: "Pédales", montant: 50 },
-            { nom: "Le vélo", montant: 1800 }
-        ];
+</div>
 
-        function mettreAJourProgression() {
-            let montantRestant = montantActuel;
-            const progressBars = document.querySelectorAll('.progress-box');
+<div class="info">
+    <div class="info-item">
+        <div class="info-label">Jours restants</div>
+        <div class="info-value" id="joursRestants"></div>
+    </div>
+</div>
 
-            objectifs.reverse().forEach((objectif, index) => {
-                if (montantRestant >= objectif.montant) {
-                    progressBars[index].classList.add('completed');
-                    montantRestant -= objectif.montant;
-                }
-            });
-        }
+<div class="boutons">
+    <button id="showRibBtn">Voir le RIB pour un virement bancaire<br />(sans commission)</button>
+    <a href="https://www.papayoux.com/fr/cagnotte/leonie-30-ans" target="_blank" id="payCBBtn">Payer par CB<br />(avec commission)</a>
+</div>
 
-        function calculerJoursRestants() {
-            const dateFin = new Date('2025-05-09');
-            const joursRestants = Math.ceil((dateFin - new Date()) / (1000 * 60 * 60 * 24));
-            document.getElementById('joursRestants').textContent = joursRestants;
-        }
+<div id="ribContent">
+    <p>Au nom de Thibaut (sans L) Lecourt</p>
+    <img id="ribImage" src="https://raw.githubusercontent.com/cupain/cupain.github.io/main/banque.png" alt="Image du RIB">
+</div>
 
-        document.getElementById('showRibBtn').addEventListener('click', function() {
-            document.getElementById('ribContent').style.display = 
-                this.textContent.includes('Cacher') ? 'none' : 'block';
-            this.textContent = this.textContent.includes('Cacher') ? 'Voir le RIB' : 'Cacher le RIB';
-        });
-
-        calculerJoursRestants();
-        mettreAJourProgression();
-    </script>
-</body>
-</html>
+<iframe src="https://framaforms.org/laissez-un-message-a-leonie-1739194232" width="100%" height="800" border="0"></iframe>
