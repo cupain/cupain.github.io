@@ -14,7 +14,7 @@
             padding: 40px 20px;
             color: #333;
         }
-       .container {
+        .container {
             max-width: 800px;
             margin: 0 auto;
             background-color: white;
@@ -27,22 +27,22 @@
             margin-bottom: 30px;
             font-weight: 700;
         }
-       .montant {
+        .montant {
             font-size: 64px;
             font-weight: 700;
             color: #27ae60;
             margin: 20px 0;
             animation: fadeIn 1s ease-out;
         }
-       .objectif {
+        .objectif {
             font-size: 24px;
             color: #7f8c8d;
             margin-bottom: 30px;
         }
-       .progress-container {
+        .progress-container {
             margin: 30px 0;
         }
-       .progress-bar {
+        .progress-bar {
             width: 100%;
             height: 20px;
             background-color: #ecf0f1;
@@ -50,14 +50,14 @@
             overflow: hidden;
             position: relative;
         }
-       .progress {
+        .progress {
             height: 100%;
             background-color: #3498db;
             width: 0;
             transition: width 1.5s ease-in-out;
             position: relative;
         }
-       .progress::after {
+        .progress::after {
             content: attr(data-progress);
             position: absolute;
             right: 10px;
@@ -66,12 +66,12 @@
             color: white;
             font-weight: bold;
         }
-       .info {
+        .info {
             display: flex;
             justify-content: space-around;
             margin-top: 40px;
         }
-       .info-item {
+        .info-item {
             flex: 1;
             padding: 20px;
             background-color: #f1f8ff;
@@ -79,15 +79,15 @@
             margin: 0 10px;
             transition: transform 0.3s ease;
         }
-       .info-item:hover {
+        .info-item:hover {
             transform: translateY(-5px);
         }
-       .info-label {
+        .info-label {
             font-size: 14px;
             color: #7f8c8d;
             margin-bottom: 5px;
         }
-       .info-value {
+        .info-value {
             font-size: 24px;
             font-weight: 700;
             color: #2c3e50;
@@ -103,12 +103,12 @@
         img:hover {
             transform: scale(1.02);
         }
-       .url {
+        .url {
             margin-bottom: 40px;
             font-size: 18px;
             color: #3498db;
         }
-       .rib {
+        .rib {
             margin-top: 40px;
             padding: 20px;
             background-color: #f9f9f9;
@@ -119,16 +119,15 @@
         #ribContent {
             display: none;
         }
-       .boutons {
+        .boutons {
             display: flex;
-            flex-wrap: wrap; /* Permet aux éléments de passer à la ligne si nécessaire */
-            justify-content: center; /* Centre les éléments */
+            flex-wrap: wrap;
+            justify-content: center;
             margin-bottom: 20px;
         }
-        
-        .boutons button,.boutons a {
-            margin: 10px; /* Ajoute une marge pour espacer les éléments */
-            background-color: #3498db; /* Couleur par défaut des boutons */
+        .boutons button, .boutons a {
+            margin: 10px;
+            background-color: #3498db;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -137,12 +136,9 @@
             font-size: 16px;
             transition: background-color 0.3s;
         }
-        
         .boutons a {
-            text-decoration: none; /* Enlève le soulignement des liens */
+            text-decoration: none;
         }
-                }
-        
         #showRibBtn, #payWeroBtn, #payCBBtn {
             background-color: #3498db;
             color: white;
@@ -157,22 +153,17 @@
         #showRibBtn:hover {
             background-color: #2980b9;
         }
-
         #payCBBtn {
             background-color: #e74c3c;
         }
-
-        
-         #payCBBtn:hover {
+        #payCBBtn:hover {
+            background-color: #c0392b;
+        }
+        .btn-rouge {
             background-color: #e74c3c;
         }
-        
-        .btn-rouge {
-            background-color: #e74c3c; /* Définit la couleur de fond du bouton rouge */
-        }
-        
         .btn-rouge:hover {
-            background-color: #c0392b; /* Définit la couleur de fond au survol pour le bouton rouge */
+            background-color: #c0392b;
         }
         #weroInfo {
             display: none;
@@ -183,19 +174,36 @@
             font-size: 14px;
             color: #27ae60;
         }
-        
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-</style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .sous-objectifs {
+            margin-top: 30px;
+            text-align: left;
+        }
+        .sous-objectif {
+            margin-bottom: 10px;
+        }
+        .sous-objectif-barre {
+            height: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .sous-objectif-progres {
+            height: 100%;
+            background-color: #3498db;
+            width: 0;
+            transition: width 1.5s ease-in-out;
+        }
+    </style>
 </head>
-    
 <body>
     <div class="container">
         <h1>Cagnotte pour les 30 ans de Léonie</h1>
 
-         <div>
+        <div>
             <p>Le 9 mai prochain, Léonie fête ses 30 ans</p>
             <h3>Offrons-lui un bon vélo 🚲 dont elle rêve depuis longtemps !</h3>
             <h4>et made in Bretagne !</h4>
@@ -205,21 +213,78 @@
         <a href="https://www.adrisport.com/velo-gravel-le-vadrouille-marron/" target="_blank">
             <img src="https://www.adrisport.com/wp-content/uploads/2023/06/72DPI_VADROUILLE_MARRON.webp" alt="Image du vélo" />
         </a>
-    
-    <h2>Objectifs de la cagnotte :</h2>
-    
-    <div class="progress-container">
-        <div class="progress-bar">
-            <div class="progress" id="progress"></div>
-        </div>
-        <div class="goals" id="goals">
-            <!-- Les éléments de la cagnotte seront ajoutés ici par JavaScript -->
-        </div>
-    </div>
 
-    <p>Montant actuel : <span id="current-amount">0</span> €</p>
-    
-     <div class="info">
+        <div>
+            <h1>Montant actuel de la cagnotte</h1>
+        </div>
+        <div class="montant" id="montantActuel"></div>
+        <div class="objectif" id="objectifTotal"></div>
+        
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress" id="progressBar"></div>
+            </div>
+        </div>
+
+        <div class="sous-objectifs">
+            <h2>Détail des objectifs</h2>
+            <div class="sous-objectif">
+                <p>1. Le vélo (1800€)</p>
+                <div class="sous-objectif-barre">
+                    <div class="sous-objectif-progres" id="progres-velo"></div>
+                </div>
+            </div>
+            <div class="sous-objectif">
+                <p>2. Pédales (50€)</p>
+                <div class="sous-objectif-barre">
+                    <div class="sous-objectif-progres" id="progres-pedales"></div>
+                </div>
+            </div>
+            <div class="sous-objectif">
+                <p>3. Pack réglage (90€)</p>
+                <div class="sous-objectif-barre">
+                    <div class="sous-objectif-progres" id="progres-reglage"></div>
+                </div>
+            </div>
+            <div class="sous-objectif">
+                <p>4. Antivol (80€)</p>
+                <div class="sous-objectif-barre">
+                    <div class="sous-objectif-progres" id="progres-antivol"></div>
+                </div>
+            </div>
+            <div class="sous-objectif">
+                <p>5. Porte-bagages (40€)</p>
+                <div class="sous-objectif-barre">
+                    <div class="sous-objectif-progres" id="progres-porte-bagages"></div>
+                </div>
+            </div>
+            <div class="sous-objectif">
+                <p>6. Changement de la selle (100€)</p>
+                <div class="sous-objectif-barre">
+                    <div class="sous-objectif-progres" id="progres-selle"></div>
+                </div>
+            </div>
+            <div class="sous-objectif">
+                <p>7. Pack éclairage (70€)</p>
+                <div class="sous-objectif-barre">
+                    <div class="sous-objectif-progres" id="progres-eclairage"></div>
+                </div>
+            </div>
+            <div class="sous-objectif">
+                <p>8. Sacoches arrière (250€)</p>
+                <div class="sous-objectif-barre">
+                    <div class="sous-objectif-progres" id="progres-sacoches-arriere"></div>
+                </div>
+            </div>
+            <div class="sous-objectif">
+                <p>9. Sacoches avant (250€)</p>
+                <div class="sous-objectif-barre">
+                    <div class="sous-objectif-progres" id="progres-sacoches-avant"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info">
             <div class="info-item">
                 <div class="info-label">Jours restants</div>
                 <div class="info-value" id="joursRestants"></div>
@@ -239,48 +304,60 @@
         <iframe src="https://framaforms.org/laissez-un-message-a-leonie-1739194232" width="100%" height="800" border="0"></iframe>
         
     </div>
-
     <script>
-        const goals = [
-            {name: "Le vélo", amount: 1800},
-            {name: "Montage + réglage + marquage", amount: 90},
-            {name: "Pédales", amount: 50},
-            {name: "Antivol", amount: 80},
-            {name: "Porte-bagages", amount: 40},
-            {name: "Changement de la selle", amount: 100},
-            {name: "Kit éclairage", amount: 70},
-            {name: "Sacoches arrière Ortlieb", amount: 180},
-            {name: "Sacoches avant Ortlieb", amount: 140}
+        const montantActuel = 1850; // Modifiez cette valeur pour mettre à jour le montant actuel
+        const objectifTotal = 2750;
+        const ribImage = document.getElementById('ribImage');
+
+        const sousObjectifs = [
+            { nom: 'velo', montant: 1800 },
+            { nom: 'pedales', montant: 50 },
+            { nom: 'reglage', montant: 90 },
+            { nom: 'antivol', montant: 80 },
+            { nom: 'porte-bagages', montant: 40 },
+            { nom: 'selle', montant: 100 },
+            { nom: 'eclairage', montant: 70 },
+            { nom: 'sacoches-arriere', montant: 250 },
+            { nom: 'sacoches-avant', montant: 250 }
         ];
-        
-        let currentAmount = 1820; // À mettre à jour manuellement
-        let accumulatedAmount = 0;
-        const totalAmount = goals.reduce((sum, goal) => sum + goal.amount, 0);
 
-        document.getElementById('current-amount').textContent = currentAmount;
-        
-        const progressElement = document.getElementById('progress');
-        const goalsContainer = document.getElementById('goals');
+        function calculerJoursRestants() {
+            const dateFin = new Date('2025-05-09');
+            const aujourdHui = new Date();
+            const differenceTemps = dateFin - aujourdHui;
+            const joursRestants = Math.ceil(differenceTemps / (1000 * 60 * 60 * 24));
+            document.getElementById('joursRestants').textContent = joursRestants;
+        }
 
-        goals.forEach(goal => {
-            accumulatedAmount += goal.amount;
-            const goalElement = document.createElement('div');
-            goalElement.className = `goal-item ${currentAmount >= accumulatedAmount ? 'active' : 'inactive'}`;
-            goalElement.innerHTML = `${goal.name}: <span class="amount">${goal.amount} €</span>`;
-            goalsContainer.appendChild(goalElement);
-        });
+        function mettreAJourProgression() {
+            const pourcentage = Math.round((montantActuel / objectifTotal) * 100);
+            
+            document.getElementById('montantActuel').textContent = `${montantActuel} €`;
+            document.getElementById('objectifTotal').textContent = `Objectif : ${objectifTotal} €`;
+            
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = `${pourcentage}%`;
+            progressBar.setAttribute('data-progress', `${pourcentage}%`);
 
-        // Ajuster la hauteur de la barre de progression
-        const achievedGoals = goals.filter((goal, index) => {
-            let tempAmount = 0;
-            for (let i = 0; i <= index; i++) {
-                tempAmount += goals[i].amount;
+            let montantRestant = montantActuel;
+            sousObjectifs.forEach(objectif => {
+                const pourcentageSousObjectif = Math.min(100, Math.round((montantRestant / objectif.montant) * 100));
+                document.getElementById(`progres-${objectif.nom}`).style.width = `${pourcentageSousObjectif}%`;
+                montantRestant = Math.max(0, montantRestant - objectif.montant);
+            });
+        }
+
+        document.getElementById('showRibBtn').addEventListener('click', function() {
+            var ribContent = document.getElementById('ribContent');
+            if (ribContent.style.display === 'none' || ribContent.style.display === '') {
+                ribContent.style.display = 'block';
+            } else {
+                ribContent.style.display = 'none';
             }
-            return currentAmount >= tempAmount;
         });
 
-        const achievedGoalsHeight = (achievedGoals.length / goals.length) * 100;
-        progressElement.style.height = `${achievedGoalsHeight}%`;
+        calculerJoursRestants();
+        mettreAJourProgression();
     </script>
 </body>
 </html>
