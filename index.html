@@ -42,114 +42,44 @@
             margin: 30px 0;
         }
 
-       .progress-bar {
+        .progress-bars {
             width: 60px;
             height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .progress-box {
+            position: relative;
+            height: 60px;
+            width: 100%;
             background-color: #ecf0f1;
             border-radius: 10px;
-            position: relative;
             overflow: hidden;
         }
 
-       .progress {
+        .progress-fill {
             width: 100%;
+            height: 100%;
             background-color: #3498db;
-            position: absolute;
-            bottom: 0;
-            transition: height 1.5s ease-in-out;
+            transition: width 1s ease-in-out;
+            position: relative;
         }
 
-       .etape {
+        .progress-label {
             position: absolute;
-            left: 100%;
-            margin-left: 10px;
+            bottom: 100%;
+            left: 0;
+            transform: translateY(-50%);
             font-size: 12px;
+            color: #7f8c8d;
+            width: 200px;
             text-align: left;
         }
 
-       .etape.attendue {
-            color: #666;
-        }
-
-       .etape.atteinte {
-            color: #2ecc71;
-        }
-
-       .info {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 40px;
-        }
-       .info-item {
-            flex: 1;
-            padding: 20px;
-            background-color: #f1f8ff;
-            border-radius: 10px;
-            margin: 0 10px;
-            transition: transform 0.3s ease;
-        }
-       .info-item:hover {
-            transform: translateY(-5px);
-        }
-       .info-label {
-            font-size: 14px;
-            color: #7f8c8d;
-            margin-bottom: 5px;
-        }
-       .info-value {
-            font-size: 24px;
-            font-weight: 700;
-            color: #2c3e50;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            margin: 20px 0;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        img:hover {
-            transform: scale(1.02);
-        }
-       .boutons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-       .boutons button,.boutons a {
-            margin: 10px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-       .boutons a {
-            text-decoration: none;
-        }
-        #showRibBtn, #payCBBtn {
-            background-color: #3498db;
-        }
-        #showRibBtn:hover {
-            background-color: #2980b9;
-        }
-        #payCBBtn {
-            background-color: #e74c3c;
-        }
-        #payCBBtn:hover {
-            background-color: #c0392b;
-        }
-                #ribContent {
-            display: none;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .progress-box.completed {
+            background-color: #27ae60;
         }
     </style>
 </head>
@@ -174,17 +104,43 @@
         <div class="montant" id="montantActuel"></div>
         
         <div class="progress-container">
-            <div class="progress-bar">
-                <div class="progress" id="progressBar"></div>
-                <div class="etape attendue" id="sacoches-avant" style="top: 90%;">Sacoches avant (250€)</div>
-                <div class="etape attendue" id="sacoches-arriere" style="top: 80%;">Sacoches arrière (250€)</div>
-                <div class="etape attendue" id="eclairage" style="top: 70%;">Pack éclairage (70€)</div>
-                <div class="etape attendue" id="selle" style="top: 60%;">Changement de la selle (100€)</div>
-                <div class="etape attendue" id="porte-bagages" style="top: 50%;">Porte-bagages (40€)</div>
-                <div class="etape attendue" id="antivol" style="top: 40%;">Antivol (80€)</div>
-                <div class="etape attendue" id="reglage" style="top: 30%;">Pack réglage (90€)</div>
-                <div class="etape attendue" id="pedales" style="top: 20%;">Pédales (50€)</div>
-                <div class="etape attendue" id="velo" style="top: 0%;">Le vélo (1800€)</div>
+            <div class="progress-bars">
+                <div class="progress-box">
+                    <div class="progress-fill" style="width: 100%;"></div>
+                    <div class="progress-label">Sacoches avant (250€)</div>
+                </div>
+                <div class="progress-box">
+                    <div class="progress-fill" style="width: 100%;"></div>
+                    <div class="progress-label">Sacoches arrière (250€)</div>
+                </div>
+                <div class="progress-box">
+                    <div class="progress-fill" style="width: 100%;"></div>
+                    <div class="progress-label">Pack éclairage (70€)</div>
+                </div>
+                <div class="progress-box">
+                    <div class="progress-fill" style="width: 100%;"></div>
+                    <div class="progress-label">Changement de la selle (100€)</div>
+                </div>
+                <div class="progress-box">
+                    <div class="progress-fill" style="width: 100%;"></div>
+                    <div class="progress-label">Porte-bagages (40€)</div>
+                </div>
+                <div class="progress-box">
+                    <div class="progress-fill" style="width: 100%;"></div>
+                    <div class="progress-label">Antivol (80€)</div>
+                </div>
+                <div class="progress-box">
+                    <div class="progress-fill" style="width: 100%;"></div>
+                    <div class="progress-label">Pack réglage (90€)</div>
+                </div>
+                <div class="progress-box">
+                    <div class="progress-fill" style="width: 100%;"></div>
+                    <div class="progress-label">Pédales (50€)</div>
+                </div>
+                <div class="progress-box">
+                    <div class="progress-fill" style="width: 100%;"></div>
+                    <div class="progress-label">Le vélo (1800€)</div>
+                </div>
             </div>
         </div>
 
@@ -209,59 +165,41 @@
         
     </div>
     <script>
-        const montantActuel = 1851; // Modifiez cette valeur pour mettre à jour le montant actuel
-        const objectifTotal = 2750;
-                const ribImage = document.getElementById('ribImage');
-
-        function calculerJoursRestants() {
-            const dateFin = new Date('2025-05-09');
-            const aujourdHui = new Date();
-            const differenceTemps = dateFin - aujourdHui;
-            const joursRestants = Math.ceil(differenceTemps / (1000 * 60 * 60 * 24));
-            document.getElementById('joursRestants').textContent = joursRestants;
-        }
+        const montantActuel = 1850;
+        const objectifs = [
+            { nom: "Sacoches avant", montant: 250 },
+            { nom: "Sacoches arrière", montant: 250 },
+            { nom: "Pack éclairage", montant: 70 },
+            { nom: "Changement de la selle", montant: 100 },
+            { nom: "Porte-bagages", montant: 40 },
+            { nom: "Antivol", montant: 80 },
+            { nom: "Pack réglage", montant: 90 },
+            { nom: "Pédales", montant: 50 },
+            { nom: "Le vélo", montant: 1800 }
+        ];
 
         function mettreAJourProgression() {
-            const pourcentage = Math.min(100, Math.round((montantActuel / objectifTotal) * 100));
-            
-            document.getElementById('montantActuel').textContent = `${montantActuel} €`;
-            
-            const progressBar = document.getElementById('progressBar');
-            progressBar.style.height = `${pourcentage}%`;
+            let montantRestant = montantActuel;
+            const progressBars = document.querySelectorAll('.progress-box');
 
-            const etapes = [
-                { id:'velo', montant: 1800, top: 0 },
-                { id: 'pedales', montant: 50, top: 20 },
-                { id:'reglage', montant: 90, top: 30 },
-                { id: 'antivol', montant: 80, top: 40 },
-                { id: 'porte-bagages', montant: 40, top: 50 },
-                { id:'selle', montant: 100, top: 60 },
-                { id: 'eclairage', montant: 70, top: 70 },
-                { id:'sacoches-arriere', montant: 250, top: 80 },
-                { id:'sacoches-avant', montant: 250, top: 90 }
-            ];
-
-            let montantCumule = 0;
-            etapes.forEach(etape => {
-                montantCumule += etape.montant;
-                const element = document.getElementById(etape.id);
-                if (montantActuel >= montantCumule) {
-                    element.classList.remove('attendue');
-                    element.classList.add('atteinte');
-                } else {
-                    element.classList.remove('atteinte');
-                    element.classList.add('attendue');
+            objectifs.reverse().forEach((objectif, index) => {
+                if (montantRestant >= objectif.montant) {
+                    progressBars[index].classList.add('completed');
+                    montantRestant -= objectif.montant;
                 }
             });
         }
 
+        function calculerJoursRestants() {
+            const dateFin = new Date('2025-05-09');
+            const joursRestants = Math.ceil((dateFin - new Date()) / (1000 * 60 * 60 * 24));
+            document.getElementById('joursRestants').textContent = joursRestants;
+        }
+
         document.getElementById('showRibBtn').addEventListener('click', function() {
-            var ribContent = document.getElementById('ribContent');
-            if (ribContent.style.display === 'none' || ribContent.style.display === '') {
-                ribContent.style.display = 'block';
-            } else {
-                ribContent.style.display = 'none';
-            }
+            document.getElementById('ribContent').style.display = 
+                this.textContent.includes('Cacher') ? 'none' : 'block';
+            this.textContent = this.textContent.includes('Cacher') ? 'Voir le RIB' : 'Cacher le RIB';
         });
 
         calculerJoursRestants();
