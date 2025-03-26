@@ -74,15 +74,16 @@
         }
 
         .sous-objectif {
-            padding: 5px;
-            font-size: 12px;
-            text-align: left;
-            transition: opacity 0.3s ease;
-        }
+    padding: 5px;
+    font-size: 12px;
+    text-align: left;
+    transition: opacity 0.3s ease;
+    opacity: 1; /* Ajouter cette ligne */
+}
 
-        .sous-objectif.grise {
-            opacity: 0.5;
-        }
+.sous-objectif.grise {
+    opacity: 0.5;
+}
         .info {
             display: flex;
             justify-content: space-around;
@@ -232,15 +233,15 @@
         }
 
         function mettreAJourProgression() {
-            const pourcentage = Math.min(100, Math.round((montantActuel / objectifTotal) * 100));
-            
-            document.getElementById('montantActuel').textContent = `${montantActuel} €`;
-            
-            const progressBar = document.getElementById('progressBar');
-            progressBar.style.height = `${pourcentage}%`;
+    const pourcentage = Math.min(100, Math.round((montantActuel / objectifTotal) * 100));
+    
+    document.getElementById('montantActuel').textContent = `${montantActuel} €`;
+    
+    const progressBar = document.getElementById('progressBar');
+    progressBar.style.height = `${pourcentage}%`;
 
-            let montantCumule = 0;
-            const sousObjectifs = [
+    let montantCumule = 0;
+    const sousObjectifs = [
                 { id: 'velo', montant: 1800 },
                 { id: 'pedales', montant: 50 },
                 { id: 'reglage', montant: 90 },
@@ -252,16 +253,21 @@
                 { id: 'sacoches-avant', montant: 250 }
             ];
 
-            sousObjectifs.forEach(objectif => {
-                montantCumule += objectif.montant;
-                const element = document.getElementById(objectif.id);
-                if (montantActuel >= montantCumule) {
-                    element.classList.remove('grise');
-                } else {
-                    element.classList.add('grise');
-                }
-            });
+           sousObjectifs.forEach(objectif => {
+        montantCumule += objectif.montant;
+        const element = document.getElementById(objectif.id);
+        if (montantActuel >= montantCumule) {
+            element.classList.remove('grise');
+        } else {
+            element.classList.add('grise');
         }
+    });
+
+    // Ajouter cette ligne pour afficher les éléments de la liste des sous-objectifs
+    document.querySelectorAll('.sous-objectif').forEach(element => {
+        element.style.opacity = 1;
+    });
+}
 
         document.getElementById('showRibBtn').addEventListener('click', function() {
             var ribContent = document.getElementById('ribContent');
