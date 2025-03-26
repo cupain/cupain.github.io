@@ -68,6 +68,9 @@
             display: flex;
             flex-direction: column-reverse;
             justify-content: space-between;
+            padding: 0;
+            margin: 0;
+            list-style: none;
         }
 
         .sous-objectif {
@@ -181,17 +184,17 @@
         <div class="progress-container">
             <div class="progress-bar">
                 <div class="progress" id="progressBar"></div>
-                <div class="sous-objectifs">
-                    <div class="sous-objectif" id="sacoches-avant">Sacoches avant (250€)</div>
-                    <div class="sous-objectif" id="sacoches-arriere">Sacoches arrière (250€)</div>
-                    <div class="sous-objectif" id="eclairage">Pack éclairage (70€)</div>
-                    <div class="sous-objectif" id="selle">Changement de la selle (100€)</div>
-                    <div class="sous-objectif" id="porte-bagages">Porte-bagages (40€)</div>
-                    <div class="sous-objectif" id="antivol">Antivol (80€)</div>
-                    <div class="sous-objectif" id="reglage">Pack réglage (90€)</div>
-                    <div class="sous-objectif" id="pedales">Pédales (50€)</div>
-                    <div class="sous-objectif" id="velo">Le vélo (1800€)</div>
-                </div>
+                <ul class="sous-objectifs">
+                    <li class="sous-objectif" id="sacoches-avant">Sacoches avant (250€)</li>
+                    <li class="sous-objectif" id="sacoches-arriere">Sacoches arrière (250€)</li>
+                    <li class="sous-objectif" id="eclairage">Pack éclairage (70€)</li>
+                    <li class="sous-objectif" id="selle">Changement de la selle (100€)</li>
+                    <li class="sous-objectif" id="porte-bagages">Porte-bagages (40€)</li>
+                    <li class="sous-objectif" id="antivol">Antivol (80€)</li>
+                    <li class="sous-objectif" id="reglage">Pack réglage (90€)</li>
+                    <li class="sous-objectif" id="pedales">Pédales (50€)</li>
+                    <li class="sous-objectif" id="velo">Le vélo (1800€)</li>
+                </ul>
             </div>
         </div>
 
@@ -236,7 +239,7 @@
             const progressBar = document.getElementById('progressBar');
             progressBar.style.height = `${pourcentage}%`;
 
-           let montantCumule = 0;
+            let montantCumule = 0;
             const sousObjectifs = [
                 { id: 'velo', montant: 1800 },
                 { id: 'pedales', montant: 50 },
