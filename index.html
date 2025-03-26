@@ -34,37 +34,40 @@
             margin: 20px 0;
             animation: fadeIn 1s ease-out;
         }
-        .objectif {
-            font-size: 24px;
-            color: #7f8c8d;
-            margin-bottom: 30px;
-        }
         .progress-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
             margin: 30px 0;
         }
         .progress-bar {
-            width: 100%;
-            height: 20px;
+            width: 20px;
+            height: 300px;
             background-color: #ecf0f1;
             border-radius: 10px;
-            overflow: hidden;
             position: relative;
+            margin-right: 20px;
         }
         .progress {
-            height: 100%;
+            width: 100%;
             background-color: #3498db;
-            width: 0;
-            transition: width 1.5s ease-in-out;
-            position: relative;
-        }
-        .progress::after {
-            content: attr(data-progress);
             position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: white;
-            font-weight: bold;
+            bottom: 0;
+            border-radius: 10px;
+            transition: height 1.5s ease-in-out;
+        }
+        .sous-objectifs {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .sous-objectif {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .sous-objectif-label {
+            margin-left: 10px;
         }
         .info {
             display: flex;
@@ -103,22 +106,6 @@
         img:hover {
             transform: scale(1.02);
         }
-        .url {
-            margin-bottom: 40px;
-            font-size: 18px;
-            color: #3498db;
-        }
-        .rib {
-            margin-top: 40px;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            font-size: 16px;
-            color: #555;
-        }
-        #ribContent {
-            display: none;
-        }
         .boutons {
             display: flex;
             flex-wrap: wrap;
@@ -139,16 +126,8 @@
         .boutons a {
             text-decoration: none;
         }
-        #showRibBtn, #payWeroBtn, #payCBBtn {
+        #showRibBtn, #payCBBtn {
             background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-            margin: 10px;
         }
         #showRibBtn:hover {
             background-color: #2980b9;
@@ -159,43 +138,12 @@
         #payCBBtn:hover {
             background-color: #c0392b;
         }
-        .btn-rouge {
-            background-color: #e74c3c;
-        }
-        .btn-rouge:hover {
-            background-color: #c0392b;
-        }
-        #weroInfo {
+        #ribContent {
             display: none;
-            margin-top: 10px;
-            padding: 10px;
-            background-color: #e8f6e9;
-            border-radius: 5px;
-            font-size: 14px;
-            color: #27ae60;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-        .sous-objectifs {
-            margin-top: 30px;
-            text-align: left;
-        }
-        .sous-objectif {
-            margin-bottom: 10px;
-        }
-        .sous-objectif-barre {
-            height: 10px;
-            background-color: #ecf0f1;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        .sous-objectif-progres {
-            height: 100%;
-            background-color: #3498db;
-            width: 0;
-            transition: width 1.5s ease-in-out;
         }
     </style>
 </head>
@@ -218,68 +166,38 @@
             <h1>Montant actuel de la cagnotte</h1>
         </div>
         <div class="montant" id="montantActuel"></div>
-        <div class="objectif" id="objectifTotal"></div>
         
         <div class="progress-container">
             <div class="progress-bar">
                 <div class="progress" id="progressBar"></div>
             </div>
-        </div>
-
-        <div class="sous-objectifs">
-            <h2>Détail des objectifs</h2>
-            <div class="sous-objectif">
-                <p>1. Le vélo (1800€)</p>
-                <div class="sous-objectif-barre">
-                    <div class="sous-objectif-progres" id="progres-velo"></div>
+            <div class="sous-objectifs">
+                <div class="sous-objectif">
+                    <div class="sous-objectif-label">Le vélo (1800€)</div>
                 </div>
-            </div>
-            <div class="sous-objectif">
-                <p>2. Pédales (50€)</p>
-                <div class="sous-objectif-barre">
-                    <div class="sous-objectif-progres" id="progres-pedales"></div>
+                <div class="sous-objectif">
+                    <div class="sous-objectif-label">Pédales (50€)</div>
                 </div>
-            </div>
-            <div class="sous-objectif">
-                <p>3. Pack réglage (90€)</p>
-                <div class="sous-objectif-barre">
-                    <div class="sous-objectif-progres" id="progres-reglage"></div>
+                <div class="sous-objectif">
+                    <div class="sous-objectif-label">Pack réglage (90€)</div>
                 </div>
-            </div>
-            <div class="sous-objectif">
-                <p>4. Antivol (80€)</p>
-                <div class="sous-objectif-barre">
-                    <div class="sous-objectif-progres" id="progres-antivol"></div>
+                <div class="sous-objectif">
+                    <div class="sous-objectif-label">Antivol (80€)</div>
                 </div>
-            </div>
-            <div class="sous-objectif">
-                <p>5. Porte-bagages (40€)</p>
-                <div class="sous-objectif-barre">
-                    <div class="sous-objectif-progres" id="progres-porte-bagages"></div>
+                <div class="sous-objectif">
+                    <div class="sous-objectif-label">Porte-bagages (40€)</div>
                 </div>
-            </div>
-            <div class="sous-objectif">
-                <p>6. Changement de la selle (100€)</p>
-                <div class="sous-objectif-barre">
-                    <div class="sous-objectif-progres" id="progres-selle"></div>
+                <div class="sous-objectif">
+                    <div class="sous-objectif-label">Changement de la selle (100€)</div>
                 </div>
-            </div>
-            <div class="sous-objectif">
-                <p>7. Pack éclairage (70€)</p>
-                <div class="sous-objectif-barre">
-                    <div class="sous-objectif-progres" id="progres-eclairage"></div>
+                <div class="sous-objectif">
+                    <div class="sous-objectif-label">Pack éclairage (70€)</div>
                 </div>
-            </div>
-            <div class="sous-objectif">
-                <p>8. Sacoches arrière (250€)</p>
-                <div class="sous-objectif-barre">
-                    <div class="sous-objectif-progres" id="progres-sacoches-arriere"></div>
+                <div class="sous-objectif">
+                    <div class="sous-objectif-label">Sacoches arrière (250€)</div>
                 </div>
-            </div>
-            <div class="sous-objectif">
-                <p>9. Sacoches avant (250€)</p>
-                <div class="sous-objectif-barre">
-                    <div class="sous-objectif-progres" id="progres-sacoches-avant"></div>
+                <div class="sous-objectif">
+                    <div class="sous-objectif-label">Sacoches avant (250€)</div>
                 </div>
             </div>
         </div>
@@ -293,7 +211,7 @@
         
         <div class="boutons">
             <button id="showRibBtn">Voir le RIB pour un virement bancaire<br />(sans commission)</button>
-            <a href="https://www.papayoux.com/fr/cagnotte/leonie-30-ans" target="_blank" id="payCBBtn" class="btn-rouge">Payer par CB<br />(avec commission)</a>
+            <a href="https://www.papayoux.com/fr/cagnotte/leonie-30-ans" target="_blank" id="payCBBtn">Payer par CB<br />(avec commission)</a>
         </div>
         
         <div id="ribContent">
@@ -310,15 +228,15 @@
         const ribImage = document.getElementById('ribImage');
 
         const sousObjectifs = [
-            { nom: 'velo', montant: 1800 },
-            { nom: 'pedales', montant: 50 },
-            { nom: 'reglage', montant: 90 },
-            { nom: 'antivol', montant: 80 },
-            { nom: 'porte-bagages', montant: 40 },
-            { nom: 'selle', montant: 100 },
-            { nom: 'eclairage', montant: 70 },
-            { nom: 'sacoches-arriere', montant: 250 },
-            { nom: 'sacoches-avant', montant: 250 }
+            { nom: 'Le vélo', montant: 1800 },
+            { nom: 'Pédales', montant: 50 },
+            { nom: 'Pack réglage', montant: 90 },
+            { nom: 'Antivol', montant: 80 },
+            { nom: 'Porte-bagages', montant: 40 },
+            { nom: 'Changement de la selle', montant: 100 },
+            { nom: 'Pack éclairage', montant: 70 },
+            { nom: 'Sacoches arrière', montant: 250 },
+            { nom: 'Sacoches avant', montant: 250 }
         ];
 
         function calculerJoursRestants() {
@@ -330,21 +248,12 @@
         }
 
         function mettreAJourProgression() {
-            const pourcentage = Math.round((montantActuel / objectifTotal) * 100);
+            const pourcentage = Math.min(100, Math.round((montantActuel / objectifTotal) * 100));
             
             document.getElementById('montantActuel').textContent = `${montantActuel} €`;
-            document.getElementById('objectifTotal').textContent = `Objectif : ${objectifTotal} €`;
             
             const progressBar = document.getElementById('progressBar');
-            progressBar.style.width = `${pourcentage}%`;
-            progressBar.setAttribute('data-progress', `${pourcentage}%`);
-
-            let montantRestant = montantActuel;
-            sousObjectifs.forEach(objectif => {
-                const pourcentageSousObjectif = Math.min(100, Math.round((montantRestant / objectif.montant) * 100));
-                document.getElementById(`progres-${objectif.nom}`).style.width = `${pourcentageSousObjectif}%`;
-                montantRestant = Math.max(0, montantRestant - objectif.montant);
-            });
+            progressBar.style.height = `${pourcentage}%`;
         }
 
         document.getElementById('showRibBtn').addEventListener('click', function() {
