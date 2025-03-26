@@ -37,37 +37,48 @@
         .progress-container {
             display: flex;
             justify-content: center;
-            align-items: flex-start;
+            align-items: flex-end;
+            height: 400px;
             margin: 30px 0;
         }
+
         .progress-bar {
-            width: 20px;
-            height: 300px;
+            width: 60px;
+            height: 100%;
             background-color: #ecf0f1;
             border-radius: 10px;
             position: relative;
-            margin-right: 20px;
+            overflow: hidden;
         }
+
         .progress {
             width: 100%;
             background-color: #3498db;
             position: absolute;
             bottom: 0;
-            border-radius: 10px;
             transition: height 1.5s ease-in-out;
         }
+
         .sous-objectifs {
+            position: absolute;
+            bottom: 0;
+            left: 100%;
+            width: 200px;
+            height: 100%;
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+            flex-direction: column-reverse;
+            justify-content: space-between;
         }
+
         .sous-objectif {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
+            padding: 5px;
+            font-size: 12px;
+            text-align: left;
+            transition: opacity 0.3s ease;
         }
-        .sous-objectif-label {
-            margin-left: 10px;
+
+        .sous-objectif.grise {
+            opacity: 0.5;
         }
         .info {
             display: flex;
@@ -170,34 +181,16 @@
         <div class="progress-container">
             <div class="progress-bar">
                 <div class="progress" id="progressBar"></div>
-            </div>
-            <div class="sous-objectifs">
-                <div class="sous-objectif">
-                    <div class="sous-objectif-label">Le vélo (1800€)</div>
-                </div>
-                <div class="sous-objectif">
-                    <div class="sous-objectif-label">Pédales (50€)</div>
-                </div>
-                <div class="sous-objectif">
-                    <div class="sous-objectif-label">Pack réglage (90€)</div>
-                </div>
-                <div class="sous-objectif">
-                    <div class="sous-objectif-label">Antivol (80€)</div>
-                </div>
-                <div class="sous-objectif">
-                    <div class="sous-objectif-label">Porte-bagages (40€)</div>
-                </div>
-                <div class="sous-objectif">
-                    <div class="sous-objectif-label">Changement de la selle (100€)</div>
-                </div>
-                <div class="sous-objectif">
-                    <div class="sous-objectif-label">Pack éclairage (70€)</div>
-                </div>
-                <div class="sous-objectif">
-                    <div class="sous-objectif-label">Sacoches arrière (250€)</div>
-                </div>
-                <div class="sous-objectif">
-                    <div class="sous-objectif-label">Sacoches avant (250€)</div>
+                <div class="sous-objectifs">
+                    <div class="sous-objectif" id="sacoches-avant">Sacoches avant (250€)</div>
+                    <div class="sous-objectif" id="sacoches-arriere">Sacoches arrière (250€)</div>
+                    <div class="sous-objectif" id="eclairage">Pack éclairage (70€)</div>
+                    <div class="sous-objectif" id="selle">Changement de la selle (100€)</div>
+                    <div class="sous-objectif" id="porte-bagages">Porte-bagages (40€)</div>
+                    <div class="sous-objectif" id="antivol">Antivol (80€)</div>
+                    <div class="sous-objectif" id="reglage">Pack réglage (90€)</div>
+                    <div class="sous-objectif" id="pedales">Pédales (50€)</div>
+                    <div class="sous-objectif" id="velo">Le vélo (1800€)</div>
                 </div>
             </div>
         </div>
@@ -227,18 +220,6 @@
         const objectifTotal = 2750;
         const ribImage = document.getElementById('ribImage');
 
-        const sousObjectifs = [
-            { nom: 'Le vélo', montant: 1800 },
-            { nom: 'Pédales', montant: 50 },
-            { nom: 'Pack réglage', montant: 90 },
-            { nom: 'Antivol', montant: 80 },
-            { nom: 'Porte-bagages', montant: 40 },
-            { nom: 'Changement de la selle', montant: 100 },
-            { nom: 'Pack éclairage', montant: 70 },
-            { nom: 'Sacoches arrière', montant: 250 },
-            { nom: 'Sacoches avant', montant: 250 }
-        ];
-
         function calculerJoursRestants() {
             const dateFin = new Date('2025-05-09');
             const aujourdHui = new Date();
@@ -254,6 +235,29 @@
             
             const progressBar = document.getElementById('progressBar');
             progressBar.style.height = `${pourcentage}%`;
+
+           let montantCumule = 0;
+            const sousObjectifs = [
+                { id: 'velo', montant: 1800 },
+                { id: 'pedales', montant: 50 },
+                { id: 'reglage', montant: 90 },
+                { id: 'antivol', montant: 80 },
+                { id: 'porte-bagages', montant: 40 },
+                { id: 'selle', montant: 100 },
+                { id: 'eclairage', montant: 70 },
+                { id: 'sacoches-arriere', montant: 250 },
+                { id: 'sacoches-avant', montant: 250 }
+            ];
+
+            sousObjectifs.forEach(objectif => {
+                montantCumule += objectif.montant;
+                const element = document.getElementById(objectif.id);
+                if (montantActuel >= montantCumule) {
+                    element.classList.remove('grise');
+                } else {
+                    element.classList.add('grise');
+                }
+            });
         }
 
         document.getElementById('showRibBtn').addEventListener('click', function() {
