@@ -34,12 +34,8 @@
             margin: 20px 0;
             animation: fadeIn 1s ease-out;
         }
-       .objectif {
-            font-size: 24px;
-            color: #7f8c8d;
-            margin-bottom: 30px;
-        }
-       .progress-container {
+        
+    .progress-container {
             margin: 30px 0;
         }
        .progress-bar {
@@ -184,6 +180,64 @@
             color: #27ae60;
         }
         
+
+    .progress-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+
+    .progress-bar {
+      height: 30px;
+      background-color: #ddd;
+      border-radius: 15px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-bar-inner {
+      height: 100%;
+      background-color: #4caf50;
+      width: 0%; /* La largeur sera mise à jour dynamiquement */
+      transition: width 0.3s ease-in-out;
+    }
+
+    .progress-text {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .gift-list {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 0;
+      list-style-type: none;
+    }
+
+    .gift-list li {
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .gift-list li.reached {
+      background-color: #dff0d8; /* Couleur verte pour les cadeaux atteints */
+    }
+
+    .gift-list li span {
+      font-weight: bold; 
+    }
+
+    footer {
+        text-align:center; 
+        margin-top :30px; 
+        color:#777; 
+        font-size :small;}
+
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -191,8 +245,7 @@
 </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Cagnotte pour les 30 ans de Léonie</h1>
+ <h1>Cagnotte pour les 30 ans de Léonie</h1>
 
          <div>
             <p>Le 9 mai prochain, Léonie fête ses 30 ans</p>
@@ -204,26 +257,31 @@
         <a href="https://www.adrisport.com/velo-gravel-le-vadrouille-marron/" target="_blank">
             <img src="https://www.adrisport.com/wp-content/uploads/2023/06/72DPI_VADROUILLE_MARRON.webp" alt="Image du vélo" />
         </a>
-
-        <div>
-            <h1>Montant actuel de la cagnotte</h1>
-        </div>
-        <div class="montant" id="montantActuel"></div>
-        <div class="objectif" id="objectifTotal"></div>
-        <p>incluant : le vélo + montage, réglage, marquage, pédales, changement de la selle, antivol et porte-bagages !</p>
         
-        <div class="progress-container">
-            <div class="progress-bar">
-                <div class="progress" id="progressBar"></div>
-            </div>
-        </div>
+<h2>Avancement de la cagnotte 🎁</h1>
 
-        <p>Et si on dépasse l'objectif ?</p>
-        <a href="https://fr.ortlieb.com/products/vario?_pos=1&_fid=215d0b4b9&_ss=c" target="_blank">
-            Des belles sacoches de voyage !
-        </a>
-        
-        <div class="info">
+<div class="progress-container">
+  <div class="progress-bar">
+    <div class="progress-bar-inner" id="progress-bar-inner"></div>
+  </div>
+  <p class="progress-text" id="progress-text">Montant collecté : €0</p>
+</div>
+
+<ul class="gift-list" id="gift-list">
+  <li data-price="1800">🚴 Vélo : <span>1800 €</span></li>
+  <li data-price="50">🚲 Pédales : <span>50 €</span></li>
+  <li data-price="80">🔧 Montage, réglage, marquage : <span>80 €</span></li>
+  <li data-price="100">🪑 Selle : <span>100 €</span></li>
+  <li data-price="30">🦯 Béquille : <span>30 €</span></li>
+  <li data-price="90">🔒 Antivol : <span>90 €</span></li>
+  <li data-price="40">📦 Porte-bagages : <span>40 €</span></li>
+  <li data-price="70">💡 Pack lumière : <span>70 €</span></li>
+  <li data-price="70">🧳 Housse de transport : <span>70 €</span></li>  
+  <li data-price="500">🎒 Sacoches Ortlieb (fourche, seat-pack, guidon cadre): <span>500 €</span></li>
+
+</ul>
+
+<div class="info">
             <div class="info-item">
                 <div class="info-label">Jours restants</div>
                 <div class="info-value" id="joursRestants"></div>
@@ -244,10 +302,12 @@
         
     </div>
 
-    <script>
-        const montantActuel = 2040; // Modifiez cette valeur pour mettre à jour le montant actuel
-        const objectifTotal = 2200;
-        const ribImage = document.getElementById('ribImage');
+
+<script>
+// Montant de la cagnotte (à mettre à jour manuellement)
+const montantCollecte = 2565; // Remplacez cette valeur par le montant actuel
+
+const ribImage = document.getElementById('ribImage');
 
         function calculerJoursRestants() {
             const dateFin = new Date('2025-05-09');
@@ -256,18 +316,7 @@
             const joursRestants = Math.ceil(differenceTemps / (1000 * 60 * 60 * 24));
             document.getElementById('joursRestants').textContent = joursRestants;
         }
-
-        function mettreAJourProgression() {
-            const pourcentage = Math.round((montantActuel / objectifTotal) * 100);
-            
-            document.getElementById('montantActuel').textContent = `${montantActuel} €`;
-            document.getElementById('objectifTotal').textContent = `Objectif : ${objectifTotal} €`;
-            
-            const progressBar = document.getElementById('progressBar');
-            progressBar.style.width = `${pourcentage}%`;
-            progressBar.setAttribute('data-progress', `${pourcentage}%`);
-        }
-
+        
         document.getElementById('showRibBtn').addEventListener('click', function() {
             var ribContent = document.getElementById('ribContent');
             if (ribContent.style.display === 'none' || ribContent.style.display === '') {
@@ -277,8 +326,44 @@
             }
         });
 
-    calculerJoursRestants();
-    mettreAJourProgression();
-    </script>
+// Initialisation
+function updateProgress() {
+  const progressBarInner = document.getElementById('progress-bar-inner');
+  const progressText = document.getElementById('progress-text');
+  
+  // Liste des cadeaux
+  const giftList = document.getElementById('gift-list');
+  
+  // Calcul du total nécessaire pour tous les cadeaux
+  const totalNeeded = Array.from(giftList.children)
+                           .reduce((total, item) => total + parseFloat(item.dataset.price), 0);
+
+  // Mise à jour de la barre de progression
+  const progressPercentage = Math.min((montantCollecte / totalNeeded) * 100, 100);
+  
+  progressBarInner.style.width = progressPercentage + '%';
+  
+  progressText.innerText = `Montant collecté : ${montantCollecte} €`;
+
+  // Mise à jour des cadeaux atteints
+  let cumulativeAmount = montantCollecte;
+
+  Array.from(giftList.children).forEach(item => {
+    const price = parseFloat(item.dataset.price);
+    
+    if (cumulativeAmount >= price) {
+      item.classList.add('reached');
+      cumulativeAmount -= price; // On déduit le prix du cadeau atteint
+    } else {
+      item.classList.remove('reached');
+    }
+  });
+}
+
+// Appel de la fonction d'initialisation
+updateProgress();
+calculerJoursRestants();
+</script>
+
 </body>
 </html>
