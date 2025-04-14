@@ -14,7 +14,7 @@
             padding: 40px 20px;
             color: #333;
         }
-        .container {
+       .container {
             max-width: 800px;
             margin: 0 auto;
             background-color: white;
@@ -27,66 +27,51 @@
             margin-bottom: 30px;
             font-weight: 700;
         }
-        .montant {
+       .montant {
             font-size: 64px;
             font-weight: 700;
             color: #27ae60;
             margin: 20px 0;
             animation: fadeIn 1s ease-out;
         }
-        .progress-container {
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            height: 400px;
+       .objectif {
+            font-size: 24px;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+       .progress-container {
             margin: 30px 0;
         }
-
-        .progress-bars {
-            width: 60px;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .progress-box {
-            position: relative;
-            height: 60px;
+       .progress-bar {
             width: 100%;
+            height: 20px;
             background-color: #ecf0f1;
             border-radius: 10px;
             overflow: hidden;
+            position: relative;
         }
-
-        .progress-fill {
-            width: 100%;
+       .progress {
             height: 100%;
             background-color: #3498db;
+            width: 0;
             transition: width 1.5s ease-in-out;
             position: relative;
         }
-
-        .progress-label {
+       .progress::after {
+            content: attr(data-progress);
             position: absolute;
-            bottom: 100%;
-            left: 0;
+            right: 10px;
+            top: 50%;
             transform: translateY(-50%);
-            font-size: 12px;
-            color: #7f8c8d;
-            width: 200px;
-            text-align: left;
+            color: white;
+            font-weight: bold;
         }
-
-        .completed {
-            background-color: #27ae60 !important;
-        }
-        .info {
+       .info {
             display: flex;
             justify-content: space-around;
             margin-top: 40px;
         }
-        .info-item {
+       .info-item {
             flex: 1;
             padding: 20px;
             background-color: #f1f8ff;
@@ -94,15 +79,15 @@
             margin: 0 10px;
             transition: transform 0.3s ease;
         }
-        .info-item:hover {
+       .info-item:hover {
             transform: translateY(-5px);
         }
-        .info-label {
+       .info-label {
             font-size: 14px;
             color: #7f8c8d;
             margin-bottom: 5px;
         }
-        .info-value {
+       .info-value {
             font-size: 24px;
             font-weight: 700;
             color: #2c3e50;
@@ -118,15 +103,32 @@
         img:hover {
             transform: scale(1.02);
         }
-        .boutons {
+       .url {
+            margin-bottom: 40px;
+            font-size: 18px;
+            color: #3498db;
+        }
+       .rib {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+        #ribContent {
+            display: none;
+        }
+       .boutons {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-wrap: wrap; /* Permet aux éléments de passer à la ligne si nécessaire */
+            justify-content: center; /* Centre les éléments */
             margin-bottom: 20px;
         }
-        .boutons button, .boutons a {
-            margin: 10px;
-            background-color: #3498db;
+        
+        .boutons button,.boutons a {
+            margin: 10px; /* Ajoute une marge pour espacer les éléments */
+            background-color: #3498db; /* Couleur par défaut des boutons */
             color: white;
             border: none;
             padding: 10px 20px;
@@ -135,145 +137,118 @@
             font-size: 16px;
             transition: background-color 0.3s;
         }
+        
         .boutons a {
-            text-decoration: none;
+            text-decoration: none; /* Enlève le soulignement des liens */
         }
-        #showRibBtn, #payCBBtn {
+                }
+        
+        #showRibBtn, #payWeroBtn, #payCBBtn {
             background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin: 10px;
         }
         #showRibBtn:hover {
             background-color: #2980b9;
         }
+
         #payCBBtn {
             background-color: #e74c3c;
         }
-        #payCBBtn:hover {
-            background-color: #c0392b;
+
+        
+         #payCBBtn:hover {
+            background-color: #e74c3c;
         }
-        #ribContent {
+        
+        .btn-rouge {
+            background-color: #e74c3c; /* Définit la couleur de fond du bouton rouge */
+        }
+        
+        .btn-rouge:hover {
+            background-color: #c0392b; /* Définit la couleur de fond au survol pour le bouton rouge */
+        }
+        #weroInfo {
             display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e8f6e9;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #27ae60;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+        
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
 </head>
 <body>
     <div class="container">
         <h1>Cagnotte pour les 30 ans de Léonie</h1>
 
-        <div class="text-content">
+         <div>
             <p>Le 9 mai prochain, Léonie fête ses 30 ans</p>
             <h3>Offrons-lui un bon vélo 🚲 dont elle rêve depuis longtemps !</h3>
             <h4>et made in Bretagne !</h4>
             <p>Plutôt que d'organiser une seule grande fête, on propose que Léonie rende visite en vélo à toute personne qui participe à la cagnotte !</p>
         </div>
 
-        <div class="image-container">
-            <a href="https://www.adrisport.com/velo-gravel-le-vadrouille-marron/" target="_blank">
-                <img src="https://www.adrisport.com/wp-content/uploads/2023/06/72DPI_VADROUILLE_MARRON.webp" alt="Image du vélo" />
-            </a>
-        </div>
+        <a href="https://www.adrisport.com/velo-gravel-le-vadrouille-marron/" target="_blank">
+            <img src="https://www.adrisport.com/wp-content/uploads/2023/06/72DPI_VADROUILLE_MARRON.webp" alt="Image du vélo" />
+        </a>
 
-        <div class="montant-container">
-            <h2>Montant actuel de la cagnotte</h2>
-            <div class="montant">1850 €</div>
+        <div>
+            <h1>Montant actuel de la cagnotte</h1>
         </div>
-
+        <div class="montant" id="montantActuel"></div>
+        <div class="objectif" id="objectifTotal"></div>
+        <p>incluant : le vélo + montage, réglage, marquage, pédales, changement de la selle, antivol et porte-bagages !</p>
+        
         <div class="progress-container">
-            <div class="progress-bars">
-                <div class="progress-box">
-                    <div class="progress-fill" style="width: 100%"></div>
-                    <div class="progress-label">Le vélo (1800 €)</div>
-                </div>
-                <div class="progress-box">
-                    <div class="progress-fill" style="width: 100%"></div>
-                    <div class="progress-label">Pédales (50 €)</div>
-                </div>
-                <div class="progress-box">
-                    <div class="progress-fill" style="width: 100%"></div>
-                    <div class="progress-label">Pack réglage (90 €)</div>
-                </div>
-                <div class="progress-box">
-                    <div class="progress-fill" style="width: 100%"></div>
-                    <div class="progress-label">Antivol (80 €)</div>
-                </div>
-                <div class="progress-box">
-                    <div class="progress-fill" style="width: 100%"></div>
-                    <div class="progress-label">Porte-bagages (40 €)</div>
-                </div>
-                <div class="progress-box">
-                    <div class="progress-fill" style="width: 100%"></div>
-                    <div class="progress-label">Changement de la selle (100 €)</div>
-                </div>
-                <div class="progress-box">
-                    <div class="progress-fill" style="width: 100%"></div>
-                    <div class="progress-label">Pack éclairage (70 €)</div>
-                </div>
-                <div class="progress-box">
-                    <div class="progress-fill" style="width: 100%"></div>
-                    <div class="progress-label">Sacoches arrière (250 €)</div>
-                </div>
-                <div class="progress-box">
-                    <div class="progress-fill" style="width: 100%"></div>
-                    <div class="progress-label">Sacoches avant (250 €)</div>
-                </div>
+            <div class="progress-bar">
+                <div class="progress" id="progressBar"></div>
             </div>
         </div>
 
-        <div class="info-container">
+        <p>Et si on dépasse l'objectif ?</p>
+        <a href="https://fr.ortlieb.com/products/vario?_pos=1&_fid=215d0b4b9&_ss=c" target="_blank">
+            Des belles sacoches de voyage !
+        </a>
+        
+        <div class="info">
             <div class="info-item">
                 <div class="info-label">Jours restants</div>
                 <div class="info-value" id="joursRestants"></div>
             </div>
         </div>
-
-        <div class="buttons-container">
-            <button id="showRibBtn">Voir le RIB pour un virement bancaire (sans commission)</button>
-            <a href="https://www.papayoux.com/fr/cagnotte/leonie-30-ans" target="_blank" id="payCBBtn">Payer par CB (avec commission)</a>
+        
+        <div class="boutons">
+            <button id="showRibBtn">Voir le RIB pour un virement bancaire<br />(sans commission)</button>
+            <a href="https://www.papayoux.com/fr/cagnotte/leonie-30-ans" target="_blank" id="payCBBtn" class="btn-rouge">Payer par CB<br />(avec commission)</a>
         </div>
-
-        <div class="rib-container" id="ribContent" style="display: none;">
-            <p>Au nom de Thibaut (sans L) Lecourt</p>
-            <img src="https://raw.githubusercontent.com/cupain/cupain.github.io/main/banque.png" alt="RIB">
+        
+        <div id="ribContent">
+            <p>Au nom de Thibaut (sans L) Lecourt </p>
+            <img id="ribImage" src="https://raw.githubusercontent.com/cupain/cupain.github.io/main/banque.png" alt="Image du RIB">
         </div>
-
-        <div class="message-container">
-            <h3>Laissez un message à Léonie !</h3>
-            < iframe src="https://framaforms.org/laissez-un-message-a-leonie-1739194232" width="100%" height="800" border="0"></iframe>
-        </div>
+        
+        <iframe src="https://framaforms.org/laissez-un-message-a-leonie-1739194232" width="100%" height="800" border="0"></iframe>
+        
     </div>
 
     <script>
-        // Initialiser le montant actuel de la cagnotte
-        const montantActuel = 1851;
+        const montantActuel = 2040; // Modifiez cette valeur pour mettre à jour le montant actuel
+        const objectifTotal = 2200;
+        const ribImage = document.getElementById('ribImage');
 
-        // Objetifs de la cagnotte
-        const objectifs = [
-            { nom: "Sacoches avant", montant: 250 },
-            { nom: "Sacoches arrière", montant: 250 },
-            { nom: "Pack éclairage", montant: 70 },
-            { nom: "Changement de la selle", montant: 100 },
-            { nom: "Porte-bagages", montant: 40 },
-            { nom: "Antivol", montant: 80 },
-            { nom: "Pack réglage", montant: 90 },
-            { nom: "Pédales", montant: 50 },
-            { nom: "Le vélo", montant: 1800 }
-        ];
-
-        // Calcul du montant restant pour chaque étape
-        let montantRestant = montantActuel;
-        const progressBoxes = document.querySelectorAll('.progress-box');
-
-        objectifs.reverse().forEach((objectif, index) => {
-            if (montantRestant >= objectif.montant) {
-                progressBoxes[index].classList.add('completed');
-                montantRestant -= objectif.montant;
-            }
-        });
-
-        // Calcul des jours restants
         function calculerJoursRestants() {
             const dateFin = new Date('2025-05-09');
             const aujourdHui = new Date();
@@ -282,14 +257,28 @@
             document.getElementById('joursRestants').textContent = joursRestants;
         }
 
-        // Afficher/cacher le RIB
+        function mettreAJourProgression() {
+            const pourcentage = Math.round((montantActuel / objectifTotal) * 100);
+            
+            document.getElementById('montantActuel').textContent = `${montantActuel} €`;
+            document.getElementById('objectifTotal').textContent = `Objectif : ${objectifTotal} €`;
+            
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = `${pourcentage}%`;
+            progressBar.setAttribute('data-progress', `${pourcentage}%`);
+        }
+
         document.getElementById('showRibBtn').addEventListener('click', function() {
-            const ribContent = document.getElementById('ribContent');
-            ribContent.style.display = ribContent.style.display === 'none' ? 'block' : 'none';
+            var ribContent = document.getElementById('ribContent');
+            if (ribContent.style.display === 'none' || ribContent.style.display === '') {
+                ribContent.style.display = 'block';
+            } else {
+                ribContent.style.display = 'none';
+            }
         });
 
-        // Initialiser le montant actuel et les jours restants
-        calculerJoursRestants();
+    calculerJoursRestants();
+    mettreAJourProgression();
     </script>
 </body>
 </html>
